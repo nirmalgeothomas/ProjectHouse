@@ -1,0 +1,106 @@
+{% extends 'user/userbase.html' %} {% load static %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card p-3">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+
+                        <center>
+                            <h2 style=" color: rgb(62, 177, 223);">{{p.name}} - {{c.name}}</h2>
+                        </center>
+                        <hr><br>
+                        <p>
+                            {{c.shortdecription}}
+                        </p>
+                        <br>
+                        <div id="accordion" role="tablist" aria-multiselectable="true">
+                            {% for t in l %}
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <a data-toggle="collapse" style="text-decoration: none;" data-parent="#accordion" href="#{{t.lectureid}}" aria-expanded="false" aria-controls="{{t.lectureid}}">
+                                        {{t.name}}
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="{{t.lectureid}}" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <video width="100%;" aria-disabled="true">
+                                                    <source src="{{t.video.url}}" type="video/mp4">
+                                                </video>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{t.description}}</p>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-9"></div>
+                                            <div class="col-md-3 mt-3">
+                                                <a href="tutorialview/{{ t.lectureid }}"><button  class="btn btn-outline-info w-100">Watch Tutorial</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br> {%endfor%}
+                        </div>
+                        <div id="accordion1" role="tablist" aria-multiselectable="true">
+                            <div class="card">
+                                <div class="card-header" role="tab" id="test1">
+                                    <h5 class="mb-0">
+                                        <a style="text-decoration: none;" data-toggle="collapse" data-parent="#accordion1" href="#test" aria-expanded="false" aria-controls="test">
+                                        Test
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="test" class="collapse" role="tabpanel" aria-labelledby="test1">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-9"></div>
+                                            <div class="col-md-3 mt-3">
+                                                <a href="test"><button  class="btn btn-outline-info w-100">Test</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="col-md-1"></div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</script>
+alert('{{message}}');
+<script>
+<script>
+    $(document).ready(function() {
+        $('#sidebarCollapse').on('click', function() {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>

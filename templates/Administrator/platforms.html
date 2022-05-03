@@ -1,0 +1,86 @@
+{% extends 'Administrator/adm_base.html' %} {% load static %} {% block body %}
+<style>
+    #choose::file-selector-button {
+        background-color: rgb(100, 139, 165);
+        /* padding: 12px; */
+        color: white;
+        width: 100px;
+        height: 25px;
+    }
+</style>
+<div class="row" style="padding-top:20px; ">
+    <div class="col-12 col-sm-2 col-md-2 col-lg-2"></div>
+
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body" style="height:auto;padding-top:20px; ">
+                <br>
+                <center>
+                    <h3 class="card-title" style="font-size: x-large;">platforms</h3>
+                </center>
+                <br><br>
+
+                <form method="post" class="post-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+
+                    <div class="form-group">
+                        <img src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %}" alt="loading" width="16">
+
+                        <label for="exampleInputName1" style="font-weight: 700;">enter platform name:</label>
+                        <input type="text" name="platform_name" class="form-control" id="exampleInputName1" placeholder="enter platform name:">
+                    </div>
+
+
+
+                    <div class="form-group ">
+                        <img src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %}" alt="loading" width="16">
+
+                        <label for="" style="font-weight: 700;">Upload Thumbnail:</label>
+                        <div class="input-group col-xs-12">
+                            <input type="file" name="upload_img" class="form-control  " />
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <img src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %}" alt="loading" width="16">
+
+                        <label for="exampleTextarea1" style="font-weight: 700;">  platform Description </label>
+                        <textarea class="form-control" name="platform_description" id="exampleTextarea2" rows="4"></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <img src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %}" alt="loading" width="16">
+                        <label for="exampleTextarea1" style="font-weight: 700;"> tutorial Description </label>
+                        <textarea class="form-control" name="tutorial_discription" id="exampleTextarea1" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group ">
+                        <img src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %}" alt="loading" width="16">
+                        <label for="" style="font-weight: 700;">Upload video</label>
+                        <div class="input-group col-xs-12">
+                            <input type="file" name="tutorial_video" class="form-control  " />
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock body %}

@@ -1,0 +1,186 @@
+{% extends 'Administrator/adm_base.html' %} {% load static %} {% block body %}
+
+<style>
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.26);
+    }
+</style>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<script>
+    window.onload = function() {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            theme: "light2",
+            title: {},
+            data: [{
+                type: "line",
+                indexLabelFontSize: 16,
+                dataPoints: [{
+                    y: 450
+                }, {
+                    y: 414
+                }, {
+                    y: 520,
+                    indexLabel: "\u2191 highest",
+                    markerColor: "red",
+                    markerType: "triangle"
+                }, {
+                    y: 460
+                }, {
+                    y: 450
+                }, {
+                    y: 500
+                }, {
+                    y: 480
+                }, {
+                    y: 480
+                }, {
+                    y: 410,
+                    indexLabel: "\u2193 lowest",
+                    markerColor: "DarkSlateGrey",
+                    markerType: "cross"
+                }, {
+                    y: 500
+                }, {
+                    y: 480
+                }, {
+                    y: 510
+                }]
+            }]
+        });
+        chart.render();
+
+    }
+</script>
+
+<body>
+    <div class="container">
+        <label for="" style="font-weight: 700">Dashboard</label>
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="comment-text ps-2 ps-md-3 w-100" style="margin-top: 1rem">
+                        <div>
+                            <div class="p-2">
+                                <img src="{% static 'images/Ellipse3.png' %}" alt="user" width="83" class="rounded-circle" align="right" />
+                            </div>
+
+                            <h3 style="text-align: center; color: #00adb5" class="font-medium">
+                                WELCOME BACK !!!
+                            </h3>
+                            <hr style="width: 95%" />
+                            <center>
+                                <span class="mb-3 d-block">Project house - Admin</span> {% for x in profile %}
+                            </center>
+
+                            <div class="row" style="margin-bottom: 3%">
+                                <div class="col-md-12 col-lg-6">
+                                    <img class="mx-4 test" src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %}" alt="loading" width="16" />
+                                    <span class="font-medium">{{ x.name }}</span>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <img class="mx-4" src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %}" alt="loading" width="16" />
+                                    <span class="font-medium">{{ x.phone }}</span>
+                                    <!--</div>-->
+                                    <!--<div class="col-md-12 col-lg-6" style="margin-left: -10%;">-->
+
+                                    <a href=""><img id="bin" src="{% static 'plugins/images/Icon-material-delete.png' %}" alt="Platforms" width="12px" style="margin-left: 35%" /></a>
+                                </div>{% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 grid-margin">
+                    <div class="card" style="height: 31vh">
+                        <div class="card-body">
+                            <center>
+                                <p class="card-title mb-0 mt-4 pt-3 text-info font-weight-bold">
+                                    Current Projects
+                                </p>
+                                <p class="card-title mb-0 mt-4 text-primary">{{ projects }}</p>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 grid-margin">
+                    <div class="card" style="height: 31vh">
+                        <div class="card-body">
+                            <center>
+                                <p class="card-title mb-0 mt-4 pt-3 text-info font-weight-bold">
+                                    Project Requests
+                                </p>
+                                <p class="card-title mb-0 mt-4 text-primary">{{ proreq }}</p>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 grid-margin">
+                    <div class="card" style="height: 31vh">
+                        <div class="card-body">
+                            <center>
+                                <p class="card-title mb-0 mt-4 pt-3 text-info font-weight-bold">
+                                    Requested Projects
+                                </p>
+                                <p class="card-title mb-0 mt-4 text-primary">
+                                    {{ requestedpro }}
+                                </p>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 grid-margin">
+                    <div class="card" style="height: 31vh">
+                        <div class="card-body">
+                            <center>
+                                <p class="card-title mb-0 mt-4 pt-3 text-info font-weight-bold">
+                                    Current Platforms
+                                </p>
+                                <p class="card-title mb-0 mt-4 text-primary">{{ platform }}</p>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 grid-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-0 mt-1 pt-0 text-info font-weight-bold">Vistiors Graph</h4>
+                            <div id="chartContainer" style="height: 140px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="static/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="static/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="static/js/off-canvas.js"></script>
+    <script src="static/js/hoverable-collapse.js"></script>
+    <script src="static/js/template.js"></script>
+    <script src="static/js/settings.js"></script>
+    <script src="static/js/todolist.js"></script>
+
+    <script src="static/js/chart.js"></script>
+    </div>
+
+</body>
+
+
+{% endblock %}

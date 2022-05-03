@@ -1,0 +1,63 @@
+{% extends 'Administrator/adm_base.html' %} {% load static %} {% block body %}
+
+
+
+<form method="post" class="post-form" action=/profilecreate/ enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="grid-margin stretch-card" style="margin-top: -20px">
+            <div class="card" style="width: 50rem">
+                <div class="card-body">
+
+                    <h1 class="card-title" style="font-size: 27px">Edit Profile</h1>
+                    <br /><br />
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" style="font-size: 20px">Name</label>
+                        <div class="col-md-8">
+                            <input autocomplete="off" type="text" class="form-control" name="name"
+                                placeholder="Enter Name" value="{{ i.name }}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" style="font-size: 20px">Phone</label>
+                        <div class="col-md-8">
+                            <input autocomplete="off" type="text" class="form-control" name="phone"
+                                placeholder="Enter Phone number" value="{{ i.phone }}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" style="font-size: 20px">Email</label>
+
+                        <div class="col-md-8">
+                            <input autocomplete="off" type="text" class="form-control" name="email"
+                                placeholder="Enter Email ID" value="{{ i.email }}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" style="font-size: 20px">Password</label>
+                        <div class="col-md-8">
+                            <input autocomplete="off" type="password" class="form-control" name="password"
+                                placeholder="Enter Password" value="{{ i.password }}" />
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <label class="form-check-label text-muted">
+
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2 w-10">Update</button>
+                    <button class="btn btn-light w-10" type="reset">Cancel</button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</form>
+{% endblock body%}

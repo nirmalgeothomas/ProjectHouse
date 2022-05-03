@@ -1,0 +1,89 @@
+{% extends 'adm_base.html' %}{% load static %}
+<html dir="ltr" lang="en">
+
+{% block body %}
+<div class="page-breadcrumb">
+    <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">View Projects</h4>
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <!-- Column -->
+    }
+    <div class="col-lg-4 col-xlg-3 col-md-12">
+
+        <div class="white-box" style="background: white; width: 100%;border-radius: 2rem; margin-left: 5%; height: 100%;box-shadow: rgb(23 24 25
+
+                         / 45%) 0px 3px 3px;">
+            {% for i in pro %}
+
+            <ul class="align-items-center mb-0" style="list-style-type:none; margin-top: 1rem;">
+                <li style="margin-top: 1rem;margin-bottom: 1rem;">
+                    <img src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %}" alt="loading" width="16">
+                    <button type="button" onclick="location.href='{% url 'viewprojectdetai1' i.id %}'" style="padding: 0;border: none;background: none ;    width: 150px;"><span class="font-medium" style="margin-left: 5%;">{{ i.platformname }}</span></button>
+                </li>
+
+
+
+            </ul>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-lg-8 col-xlg-9 col-md-12" style="margin-left: -1%;">
+        <div class="card" style="background: white; width: 92%; border-radius: 2rem; margin-left: 5%;box-shadow: rgb(23 24 25 / 45%) 0px 3px 3px;">
+            <ul class="align-items-center mb-0" style="list-style-type:none; margin-top: 1rem;">
+                <li id="python">
+                    <ul class="align-items-center mb-0" style="list-style-type:none; margin-top: 1rem;">
+                        {% for x in python %}
+                        <li style="margin-top: 1rem;margin-bottom: 1rem;">
+                            <span class="font-medium" style="margin-left: 0%; color: rgba(0,132,255,0.85);">{{ x.projectname }}</span>
+                            <a href="{% url 'deleteprojects' x.id %}">
+                                <img src="{% static 'plugins/images/Icon-material-delete.png' %}" alt="loading" width="16" style="margin-left: 60px;">
+                            </a>
+                            <hr style="margin-left: 1rem;margin-right: 1rem;">
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li><img src={{ x.projectThumb }} alt="loading" height="100px" width="100px"></li>
+                                <li style="margin-left: 1rem; margin-right: 1rem;">
+                                    <p style="text-align: justify;"></p>{{ x.shortdescription }}</li>
+                            </ul>
+                        </li>
+                        {% endfor %}
+
+
+        </div>
+    </div>
+    <!-- Column -->
+</div>
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="{% static 'plugins/bower_components/jquery/dist/jquery.min.js' %}"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="{% static 'bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/app-style-switcher.js '%}"></script>
+<script src="{% static 'plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js' %}"></script>
+<!--Wave Effects -->
+<script src="{% static 'js/waves.js' %}"></script>
+<!--Menu sidebar -->
+<script src="{% static 'js/sidebarmenu.js' %}"></script>
+<!--Custom JavaScript -->
+<script src="{% static 'js/custom.js' %}"></script>
+<!--This page JavaScript -->
+<!--chartis chart-->
+<script src="{% static 'plugins/bower_components/chartist/dist/chartist.min.js' %}"></script>
+<script src="{% static 'plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js' %}"></script>
+<script src="{% static 'js/pages/dashboards/dashboard1.js' %}"></script>
+
+</div>
+{% endblock %}

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+     <title>Registration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <style>
+
+display-flex, .signup-content, .select-icon i {
+  display: flex;
+  display: -webkit-flex; }
+
+
+
+
+
+
+
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+figure {
+  margin: 0; }
+
+
+
+
+h2 {
+  line-height: 1.66;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  color: navy;
+
+ font-family: times new roman;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-bottom: 10px; }
+
+p {
+    color:red;
+    font-size:17px;
+}
+
+body {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #222;
+  background-image: url({% static 'images/a1.jpg' %});
+     background-size: cover;
+    padding: 0px; }
+
+.container {
+    margin:40px;
+  position: relative;
+  
+
+  background: #fff; }
+
+.signup-img, .signup-form {
+  width: 50%; }
+
+.signup-img {
+  margin-bottom: -7px;}
+
+.register-form {
+  padding: 50px 70px 10px 70px; }
+
+
+
+.form-group {
+  margin-bottom: 23px;
+  position: relative; }
+
+select {
+  display: block;
+  width: 100%;
+  border: 1px solid #ebebeb;
+  padding: 11px 20px;
+  box-sizing: border-box;
+ font-family: times new roman;
+  font-weight: 500;
+  font-size: 15px; }
+
+
+input {
+    display: block;
+    width: 100%;
+    border: 1px solid #ebebeb;
+    padding: 11px 20px;
+    box-sizing: border-box;
+   font-family: times new roman;
+    font-weight: 500;
+    font-size: 15px; }
+  input[type=date]
+  {
+      height:50%;
+  }
+  textarea {
+  display: block;
+  width: 100%;
+  height:100px;
+  border: 1px solid #ebebeb;
+  padding: 11px 20px;
+  box-sizing: border-box;
+ font-family: times new roman;
+  font-weight: 500;
+  font-size: 15px; }
+  input:focus, select:focus,textarea:focus {
+    border: 1px solid navy; }
+
+label {
+  font-size: 18px;
+  font-weight: bold;
+font-family: times new roman;
+  margin-bottom: 2px;
+  display: block; }
+
+
+
+
+.form-submit {
+
+  padding-top: 20px;
+width:150px;}
+a {
+    color: inherit;
+    cursor: pointer
+}
+.submit {
+  display: inline-block;
+  font-family: 'Times New Roman';
+  font-weight:bold;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  cursor: pointer; }
+
+
+
+#submit {
+  background: #1A237E;
+  color: #fff; }
+  #submit:hover {
+    background-color: #2867B2 }
+
+
+
+
+  .signup-img, .signup-form {
+    width: 100%; }
+@media screen and (max-width: 800px) {
+  .register-form {
+    padding: 50px 40px 50px 40px; } }
+@media screen and (max-width: 575px) {
+
+
+  .form-row .form-group {
+    width: 100%;
+    padding: 0px; }
+
+
+@media screen and (max-width: 800px) {
+
+
+  .submit {
+    width: 50%; }
+
+
+
+
+
+    </style>
+
+
+
+</head>
+<body>
+
+    <div class="main">
+        <div class="container">
+          
+ 
+                <div class="signup-form">
+
+                      <form method="POST"class="register-form" id="register-form" action={% url 'usercreate' %}>
+                  {% csrf_token %}
+                  
+
+                        <h2>Sign Up</h2>
+                        <hr>
+
+            {% for message in messages %}
+<p>
+                        {{ message }}
+</p>
+
+
+                    {% endfor %}
+                         <div class="form-group" style="margin-top: 25px;">
+
+                                <label for="name">Full Name <span style="color:red; ">*</span></label>
+                               <input type="text" placeholder="Full Name" name="name" required>
+                        </div>
+                        <div class="form-group" style="margin-top: 25px;">
+                         
+
+                                <label for="name">Platform <span style="color:red; ">*</span></label>
+                                <select  name="platformid" id="pla"required>
+                                  <option selected disabled value="">Choose...</option>
+                                  {% for p in pl%}%
+                                  <option value="{{ p.platformid}}">{{p.name}}</option>
+                                  {% endfor %}
+                              </select>     </div>
+                        <div class="form-group" style="margin-top: 25px;">
+
+                            <label for="name">Course <span style="color:red; ">*</span></label>
+                            <select  name="level" id="coo" required>
+                        <option selected disabled value="">Choose...</option>
+                        {% for cl in c %}
+                                  <option value="{{ cl.courseid }}">{{cl.name}}</option>
+                        {%endfor%}
+                    </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact"> Contact Number <span style="color:red; ">*</span></label>
+                           <input  type="number" name="cno" required placeholder="Enter Contact Number" pattern="[0-9]{10}" maxlength="10">
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="email">Email Id <span style="color:red; ">*</span></label>
+                            <input type="email" name="email" required placeholder="abc@gmail.com"/>
+                        </div>
+                          <div class="form-group">
+                            <label for="password">Password <span style="color:red; ">*</span></label>
+                            <input type="password" placeholder="Password" name="password" id="pwd"/>
+                        </div>
+                        <div class="input-field">
+                          <i class="fas fa-lock"></i>
+                          <input type="password" placeholder="Confirm Password" name="conformpassword" id="cnfpwd"/>
+                      </div>
+                       
+
+<div class="form-submit">
+
+                            <input type="submit" value="Register" class="submit" name="submit" id="submit" />
+
+
+                        </div>
+
+
+                                     <div style="padding-top: 20px;font-size: 18px;font-weight: bold;color:black;">Have Already An Account?  <a style="color:brown;"   href="{% url 'gologin' %}">Login</a>        </div>
+
+
+
+
+
+                    </form>
+                </div>
+
+             </div>
+        </div>
+
+    </div>
+    <script>
+      function validate() {
+          var pwd = document.getElementById("pwd").value;
+          var cnfpwd = document.getElementById("cnfpwd").value;
+          var usnm = document.getElementById("user").value;
+  
+          if (pwd.length < 8 || pwd.length > 18) {
+              alert("Password length is invalid");
+              return false;
+          }
+          if (pwd != cnfpwd) {
+              alert("password and conform password does not match");
+              return false;
+          }
+          return true;
+      }
+  </script>
+
+</body>
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+<script>
+  $(document).ready(function()
+  {
+    var $pp=$("#pla");
+        $cc=$("#coo");
+        $options=$cc.find('option');
+        $pp.on('change',function()
+        {
+          $cc.html($options.filter('[value="'+this.name+'"]'));
+        }).trigger('change');
+  });
+</script>-->
+
+</html>

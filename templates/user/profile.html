@@ -1,0 +1,82 @@
+{% extends 'user/userbase.html' %} {% load static %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card p-3">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 mt-3">
+                                <center>
+                                    <img src="{% static 'images/Ellipse3.png' %}" class="mt-5" alt="" height="200px" width="200px" style="border-radius: 3px;">
+                                </center>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8 col-md-12">
+                        <center>
+                            <h4 style="color: rgb(62, 177, 223);">MY PROFILE</h4>
+                        </center>
+                        <hr><br>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4 mt-3">
+                                <h5 style="font-weight: normal;">Name </h5>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <h5 style="font-weight: lighter;">: {{l.fullname}}</h5>
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4 mt-3">
+                                <h5 style="font-weight: normal;">Platform Name </h5>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <h5 style="font-weight: lighter;">: {{p.name}} </h5>
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4 mt-3">
+                                <h5 style="font-weight: normal;">Course Name </h5>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <h5 style="font-weight: lighter;">: {{c.name}} </h5>
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4 mt-3">
+                                <h5 style="font-weight: normal;">Email Id : </h5>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <h5 style="font-weight: lighter;">: {{l.email}} </h5>
+                            </div>
+                            <div class="col-md-2"></div>
+
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4 mt-3">
+                                <h5 style="font-weight: normal;">Contact Number </h5>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <h5 style="font-weight: lighter;">: {{l.cno}} </h5>
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2"></div>
+
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4 mt-5 mb-3">
+                                <a href="{% url 'edituserprofile' l.sid %}"><button type="submit" class="btn btn-outline-info w-100">Edit</button></a>
+                            </div>
+                            <div class="col-md-4"></div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

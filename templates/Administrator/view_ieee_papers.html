@@ -1,0 +1,79 @@
+{% extends 'user/user_base.html' %} {% load static %} {% block body %} {% for p in paper %}
+
+<div class="form-group">
+    <div class="grid-margin stretch-card" style="margin-top: -20px">
+        <div class="break-all">
+            <div class="card" style="width: 50rem">
+                <div class="card-body">
+                    <h1 class="card-title" style="font-size: 27px">{{ p.title }}</h1>
+
+
+                    <p style="text-align: justify">Click here to download the ieee paper</p>
+                    <div class="d-flex justify-content-start">
+                        <div class="form-group row">
+                            <div class="form-check">
+                                <label class="form-check-label text-muted">
+            <a href="{% url 'user_req_ieee_projects' p.id %}">
+            <button type="button" class="btn btn-primary me-2 w-10">Request Project</button></a>
+            <a href="{{ p.uploadpdf.url }}">
+            <button class="btn btn-primary me-2 w-10"   type="button">Download</button></a>
+              </div>
+            </div>
+        </div>
+        </div>   
+          </div>
+        </div>
+      </div>
+
+
+
+
+{% endfor %}
+
+<script>
+$('#srcbtn').click(function (){
+    let search = $('#searchbar').val();
+    console.log(search)
+    var searchList = document.querySelector('#search-result-list');
+
+
+    var data = {
+        'csrfmiddlewaretoken' : '{{ csrf_token }}',
+        'search': search,
+    }
+
+    $.ajax({
+        url: '/userdashboard/',
+        method: 'POST',
+        data: data,
+        dataType: 'json',
+        success: function (data){
+            searchList.innerHTML = '';
+            console.log('hi');
+            document.getElementById('search-result').style.display = "block";
+            var i;
+
+            for (i=0; i< data.length; i++){
+                 var li = document.createElement("li");
+                 var aTag = document.createElement("a");
+                 aTag.innerHTML = data[i];
+                 var url = "http://localhost:8000/takeDiversion";
+                var arg = data[i];
+                 aTag.href = url + "/" + arg;
+                 li.appendChild(aTag);
+                 searchList.appendChild(li);
+                console.log(data[i]);
+            }
+
+        }
+    });
+});
+
+$('body').click(function() {
+   $('.search-result').hide();
+});
+</script>
+<script src={% static 'js/scripts.js' %}></script>
+
+
+{%endblock%}

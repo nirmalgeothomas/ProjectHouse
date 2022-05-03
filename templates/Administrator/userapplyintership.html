@@ -1,0 +1,226 @@
+{% extends 'user/user_base.html' %} {% load static %} {% block body %}
+
+<style>
+  @media screen and (max-width:292px){
+    .btn-secondary{
+      margin-bottom: 6px;
+    }
+  }
+  
+</style>
+<div style="text-align: center;">
+  <h4 style="position: relative;">Apply for internship</h4>
+</div>
+
+
+<hr style="position: relative;">
+
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {% for message in messages %}
+  <center>{{message}}</center>
+  {% endfor %}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+<!--Grid column-->
+<div class="row">
+
+  <div class="col-md-3 col-12 mb-4"></div>
+  <!--Grid column-->
+  <div class="col-md-6 col-12 mb-4">
+
+    <!--Title-->
+
+    <section>
+
+      <!-- Material form register -->
+      <div style="text-align: center;">
+        <div class="card">
+
+
+
+          <!--Card content-->
+          <div class="card-body">
+
+            <!-- Form -->
+            <form action="{% url 'userintership' %}" method="post" onsubmit="return myfun()" style="color: #757575;">
+              {% csrf_token %}
+
+              <div class="">
+                <div class="col">
+                  <!-- First name -->
+                  <br>
+                  <div class="md-form">
+                    <label for="materialRegisterFormFirstName" style=" position:relative;top: 8px">Name:</label>
+                    <input type="text" name="name" class="form-control" required style="position: relative;top: 10px;">
+                  </div><br>
+                </div>
+                <div class="col-12">
+                  <!-- Last name -->
+                  <div class="md-form">
+                    <label for="phone" style=" position:relative;top: 8px">Phone No:</label>
+                    <div class="international">
+                      <input type="text" id="phone" name="phonenumber" class="form-control form-control-sm p"
+                        pattern="(\+)*[0-9]{9,}" required style="position: relative;top: 10px;">
+                    </div>
+
+                  </div>
+                  <div class="mt-2" id="messages" style="color:red;"></div>
+                  <span id="valid-msg" class="hide"></span>
+                  <span id="error-msg" class="hide" style="color:red"></span>
+                </div><br>
+              </div>
+
+              <!-- E-mail -->
+              <div class="md-form mt-0">
+
+                <label for="materialRegisterFormEmail" class="active"
+                  style=" position:relative;top: 8px">E-mail:</label>
+                <input type="email" name="emailid" id="email" class="form-control" required
+                  style="position: relative;top: 10px;">
+              </div>
+              <div class="mt-2" id="emessages" style="color:red"></div>
+
+              <br>
+
+              <div class="md-form mt-0">
+
+                <label for="materialRegisterFormEmail" class="active" style=" position:relative;top: 8px">Platform
+                </label>
+                <input type="text" name="selectplatform" id="" class="form-control" required
+                  style="position: relative;top: 10px;">
+
+
+              </div>
+              <br>
+              <!-- Password -->
+              <div class="md-form">
+
+                <label for="materialRegisterFormPassword" class="active" style=" position:relative;top: 8px">
+                  Qualification</label>
+                <input type="text" name="qualifications" class="form-control" required
+                  style="    position: relative;top: 10px;">
+                <small id="materialProjectname" class="active">
+
+                </small>
+              </div><br>
+              <div class="md-form">
+
+                <label for="materialRegisterFormPassword" class="active"
+                  style=" position:relative;top: 8px">College</label>
+                <input type="text" name="college" class="form-control" required
+                  style="    position: relative;top: 10px;">
+                <small id="materialProjectname" class="active">
+
+                </small>
+              </div><br>
+              <div class="md-form">
+
+                <label for="materialRegisterFormPassword" class="active" style=" position:relative;top: 8px">Your
+                  location</label>
+                <input type="text" name="location" class="form-control" required
+                  style="    position: relative;top: 10px;">
+                <small id="materialProjectname" class="active">
+
+                </small>
+              </div><br>
+
+
+              <!-- Phone number -->
+
+
+
+
+
+              <!-- Sign up button -->
+              <div style="text-align: center;">
+                <button type="submit" class="btn btn-secondary">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+              <!-- Social register -->
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+    </section>
+    <!--Section: Live preview-->
+
+  </div>
+  <div class="col-md-3 col-12 mb-4"></div>
+  <!--Grid column-->
+
+</div>
+<!--Grid row-->
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--<script src={% static 'js/intlTelInput.js' %}></script>-->
+<!--<script src={% static 'js/intlTelInput.min.js' %}></script>-->
+<!--<script src={% static 'js/utils.js' %}></script>-->
+
+<!--<script src={% static 'js/intlTelInput-jquery.js' %}></script>-->
+
+<!--  <script>-->
+<!--    var input = document.querySelector("#phone"),-->
+<!--    errorMsg = document.querySelector("#error-msg"),-->
+<!--    validMsg = document.querySelector("#valid-msg");-->
+
+<!--Error messages based on the code returned from getValidationError-->
+<!--var errorMap = [ "Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];-->
+
+
+
+<!-- var intl=window.intlTelInput(input, {-->
+<!--        initialCountry: "auto",-->
+<!--        geoIpLookup: function(success, failure) {-->
+<!--            $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {-->
+<!--                var countryCode = (resp && resp.country) ? resp.country : "";-->
+<!--                success(countryCode);-->
+<!--            });-->
+<!--        },-->
+<!--        utilsScript: "js/utils.js"-->
+<!--    });-->
+
+<!--    var reset = function() {-->
+<!--      input.classList.remove("error");-->
+<!--      errorMsg.innerHTML = "";-->
+<!--      errorMsg.classList.add("hide");-->
+<!--      validMsg.classList.add("hide");-->
+<!--  };-->
+
+<!--  input.addEventListener('blur', function() {-->
+<!--    reset();-->
+<!--    if(input.value.trim()){-->
+<!--        if(intl.isValidNumber()){-->
+<!--            validMsg.classList.remove("hide");-->
+<!--        }else{-->
+<!--            input.classList.add("error");-->
+<!--            var errorCode = intl.getValidationError();-->
+<!--            errorMsg.innerHTML = errorMap[errorCode];-->
+<!--            errorMsg.classList.remove("hide");-->
+<!--        }-->
+<!--    }-->
+<!--});-->
+<!--Reset on keyup/change event-->
+<!--input.addEventListener('change', reset);-->
+<!--input.addEventListener('keyup', reset);-->
+
+<!--      </script>-->
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+{% endblock %}

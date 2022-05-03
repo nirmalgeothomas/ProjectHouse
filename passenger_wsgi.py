@@ -1,0 +1,1 @@
+from projecthouse.wsgi import application

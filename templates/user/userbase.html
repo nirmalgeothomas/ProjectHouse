@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/userbase.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Project House</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar" id="sidebar" style="background-image: linear-gradient(#007acc, #0099ff);">
+            <div class="logoo">
+                <img src="{% static 'images/Icon-simple-treehouse.png' %}" style="margin-top:5px;" alt="homepage" width="10%" height="10%" />
+                <h3><b>Project</b> House</h3>
+            </div>
+            <ul>
+                <li><a href="{% url 'userdash' %}"><i class="fas fa-user-alt"></i><span> Dashboard</span></a></li>
+                <li><a href="{% url 'userprofile' %}"><i class="fas fa-user-alt"></i><span> My Profile</span></a></li>
+                <li><a href="{% url 'tutorials' %}"><i class="fas fa-project-diagram"></i><span> Tutorials</span></a></li>
+                <li><a href="{% url 'certificate' %}"><i class="fab fa-buffer"></i><span> Certificate</span></a></li>
+
+                <li><a href="{% url 'userlogout' %}"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
+            </ul>
+        </div>
+        <div class="main-content" id="maincontent">
+            <nav class="navbar bg-light mb-4">
+                <button type="button" style="display: block;" id="sidebarCollapse" class="btn btn-outline-info d-lg-none"><i class="fas fa-bars"></i></button>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="search" value="Search">
+                    </div>
+                </div>
+            </nav>
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').toggleClass('active');
+                $('#maincontent').toggleClass('active');
+                $('#search').toggleClass('active');
+            });
+        });
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,343 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project House</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+     <script src="https://kit.fontawesome.com/469ce4321a.js" crossorigin="anonymous"></script>
+   <link href="{% static 'css/style6.css' %}" rel="stylesheet">
+    <style type="text/css">
+        .css-serial {
+          counter-reset: serial-number;  /* Set the serial number counter to 0 */
+        }
+
+        .css-serial h2:first-child:before {
+          counter-increment: serial-number;  /* Increment the serial number counter */
+          content: counter(serial-number);  /* Display the counter */
+        }
+        .btnstyl {
+                margin-left: 70%;
+                margin-bottom: 1rem;
+                background: #eed000e8;
+                border-color: aliceblue;
+                color: black;
+                border-radius: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header style="background-image: url('{% static "images/6777876-blue-abstract-photos.png" %}') ;height: 300px;">
+        <div >
+        <nav class="navbar navbar-dark bg-primary" style="height: 55px;">
+
+            <div class="logo" style="margin-bottom: 150px;margin-left: 40px;width: 30px; ">
+
+            </div>
+            <div class="container px-0" >
+                <div class="navbar-brand" style=" margin-bottom: 150px;margin-left: 10px;font-weight: normal;font-max-size: large;font-size: 25px;"><b>Project</b> House</div>
+                    <ul class="nav-area" >
+                    <li style="position: relative;bottom: 80px;"><a href={% url 'userdashboard' %}> Home</a></li>
+                    <li style="position: relative;bottom: 80px;"><a href="{% url 'userreqprojects' %}">Request project</a></li>
+                    </ul>
+            </div>
+        </nav>
+<div style="margin-left: 37%; margin-top: 5%">
+            <img src="{% static 'images/Group 43.png' %}" width="55%">
+        </div>
+        <div style="margin-left: 34%;margin-top: 2rem;margin-bottom: 2rem;">
+            <h6 style="color: white; font-family: sans-serif; font-style: oblique;">Find your best projects for your academics from here</h6>
+        </div>
+        <div class="col-md-6 mb-4 col-lg-4" style="margin-left: 34%;" >
+
+          <div class="input-group md-form form-sm form-2 pl-0 searchbox" style="box-shadow: rgb(6 209 241) -7px 0px 33px; background: white;border-radius: 1.25rem;">
+
+
+<!--               <span class="input-group-text amber lighten-3" id="basic-text1"  style="color: rgb(6 209 241);">
+              </span> -->
+            </div>
+          </div>
+
+        </div>
+
+
+</header>
+<div class="css-serial">
+<section id="scroll">
+            <div class="container px-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-9 order-lg-1">
+                        <div class="p-5">
+                            <h4 class="display-6">Best ML projects for cse students</h4>
+                            <hr>
+                            <p style="text-align: justify; ">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                        sed diam voluptua. At vero eos et accusam et justo duo.</p>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 order-lg-2">
+                        <div class="p-5"><img  src="{% static 'images/20190903-MachineLearning.png' %}" alt="..." width="100%" /></div>
+                    </div>
+                </div>
+            </div>
+</section>
+          <table class="table table-striped" style="width: 80%; margin-left: 12%;--bs-table-accent-bg: white;--bs-table-striped-bg: cyan;" >
+                <tbody>
+        <tr>
+           <td >Project Name</td>
+             <td>{{ projects.projectname }}</td>
+        </tr>
+        <tr>
+            <td>Language used</td>
+            <td>{{ projects.languageused }}</td>
+        </tr>
+        <tr>
+           <td>Database</td>
+            <td>{{ projects.database }}</td>
+        </tr>
+        <tr>
+            <td>Softwares</td>
+            <td>{{ projects.softwares }}</td>
+        </tr>
+        <tr>
+           <td>User Interface</td>
+           <td>{{ projects.userinterface }}</td>
+    </tr>
+    </tbody>
+</table>
+ <a href="{% url 'userreqprojects' %}">
+<button type="button" class="btn btnstyl">Get Project<i class="fas fa-arrow-right" style="margin-left: 1rem;"></i>
+                </button>
+            </a>
+<section id="scroll">
+            <div class="container px-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-6" style="color: #0cd8eced;">. Project Demo</h2>
+                            <hr>
+                             <video width="400" height="400" controls >
+                                 <source src="{{projects.uploadvideo.url}}" type="video/mp4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    </section>
+    <section id="scroll">
+            <div class="container px-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-6" style="color: #0cd8eced;">. Project Abstract</h2>
+                            <hr>
+                            <p style="text-align: justify;"> {{ projects.projectabstract }}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+    </section>
+     <section id="scroll">
+            <div class="container px-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-6" style="color: #0cd8eced;">. Module Details</h2>
+                            <hr>
+                            <p style="text-align: justify;">{{ projects.moduledetails }}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+ <section id="scroll">
+            <div class="container px-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+
+                    </div>
+
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-6" style="color: #0cd8eced;">. Screenshots</h2>
+                            <hr>
+                            <style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+                            <div class="row">
+                              <div class="column" style="float: left;margin-top: 90px;padding-bottom: 30px">
+                             <img src="{{ projects.uploadscree1 }}" alt="..." width="150%"/>
+                             </div>
+                             <div class="column" style="margin-bottom: 40px;padding-top: 45px;margin-left: 60px;">
+                             <div class="p-5"><img src="{{ projects.uploadscree2 }}" alt="..." width="550%" /></div>
+                            </div>
+                            </div>
+                             <div class="row">
+                              <div class="column" style="float: left;margin-top: 90px;padding-bottom: 30px">
+                             <img src="{{ projects.uploadscree3 }}" alt="..." width="150%"/>
+                             </div>
+                             <div class="column" style="margin-bottom: 40px;padding-top: 45px;margin-left: 60px;">
+                             <div class="p-5"><img src="{{ projects.uploadscree4 }}" alt="..." width="550%" /></div>
+                            </div>
+                            </div>
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+    <section id="scroll">
+            <div class="container px-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-6" style="color: #0cd8eced;">. IEEE Paper</h2>
+                            <hr>
+                            <p style="text-align: justify;">Click here to download the ieee paper</p>
+                            <a href="{{ projects.uploadpdf.url }}"><button type="button" style="padding: 5px;position: absolute" class="btn btnstyl">
+                    download
+                    <i class="fas fa-arrow-right" style="margin-left: 1rem;"></i>
+                </button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+<h3 style="margin-left: 490px">Get this Project</h3>
+<hr>
+<p style="text-align: center"> To get this project  , Kindly share your contact  details.
+Our representative will contact you soon</p>
+<div class="col-md-6 mb-4" style="margin-left: 25%">
+
+              <!--Title-->
+<form action={% url 'getproject' projects.id%} method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+                                 {% csrf_token %}
+
+              <!--Section: Live preview-->
+              <section class="pr-1">
+
+                <!-- Material form register -->
+                <div class="card">
+
+                </div>
+
+                  </h5>
+
+                  <!--Card content-->
+                  <div class="card-body px-lg-5 pt-0">
+
+                    <!-- Form -->
+                    <form class="text-center" style="color: #757575;">
+
+                      <div class="form-row">
+                        <div class="col">
+                          <!-- First name -->
+                          <br>
+                          <div class="md-form">
+                            <label for="materialRegisterFormFirstName" style=" position:relative;top: 8px">Name:</label>
+                            <input type="text" id="materialRegisterFormFirstName" name="name" class="form-control"style=" position:relative;top: 8px">
+                          </div>
+                        </div><br>
+                        <div class="col">
+                          <!-- Last name -->
+                          <div class="md-form">
+                            <label for="materialRegisterFormLastName" style=" position:relative;top: 8px" >Phone No:</label>
+                             <input type="text" id="materialRegisterFormPhone" name="phone" class="form-control"style=" position:relative;top: 8px">
+                          </div>
+                        </div><br>
+                      </div>
+
+                      <!-- E-mail -->
+                      <div class="md-form mt-0">
+
+                        <label for="materialRegisterFormEmail" class="active" style=" position:relative;top: 8px">E-mail:</label>
+                        <input type="email" id="materialRegisterFormEmail" name="email" class="form-control" style=" position:relative;top: 8px">
+                      </div><br>
+
+                      <!-- Password -->
+
+
+                      <!-- Sign up button -->
+                     <button class="btn btn-secondary cancel" type="reset"  style="width:80px;background: #B2C1C2;margin-left: 300px;margin-bottom: 2%;border-radius: 16px;position: relative;bottom: 40px;top: 10px;" >Cancel</button>
+                    <button class="btn btn-secondary update" type="submit" style="width:80px;
+
+    background:  #66F0F5;
+    margin-right: 20px;
+    margin-left: 10px;
+    margin-bottom: 2%;
+    border-radius: 16px;
+    position: relative;
+    bottom: 40px;
+    top: 10px;
+    ">
+
+                        Submit</button>
+                      <!-- Social register -->
+
+
+                    </form>
+                  </div>
+              </section>
+              <!--Section: Live preview-->
+
+            </div>
+            <!--Grid column-->
+
+          </div>
+          <!--Grid row-->
+
+
+
+  </div>
+</body>
+</html>

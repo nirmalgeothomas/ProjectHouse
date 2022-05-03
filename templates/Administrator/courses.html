@@ -1,0 +1,46 @@
+{% extends 'Administrator/adminbase.html' %} {% load static %} {% block content %}
+<div class="container courselement">
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+            <div class="card w-100 p-4" style="box-shadow: 5px 5px 10px #888888; border-radius: 5px; overflow: hidden;">
+                <center>
+                    <a href="{% url 'platforms' %}" style="text-decoration: none;">
+                        <img src="{% static 'images/desktop.png' %}" alt="" height="60%" width="60%" class="mt-3"><br><br>
+                        <h5>PLATFORMS</h5>
+                    </a>
+                </center>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+            <div class="card w-100 p-3" style="box-shadow: 5px 5px 10px #888888; border-radius: 5px; overflow: hidden;">
+                <center>
+                    <a href="{% url 'course' %}" style="text-decoration: none;">
+                        <img src="{% static 'images/graduation.png' %}" alt="" height="60%" width="60%" class="mt-3"><br><br>
+                        <h5>COURSES</h5>
+                    </a>
+                </center>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+            <div class="card w-100 p-3" style="box-shadow: 5px 5px 10px #888888; border-radius: 5px; overflow: hidden;">
+                <center>
+                    <a href="{% url 'lectures' %}" style="text-decoration: none;">
+                        <img src="{% static 'images/videoplayer.png' %}" alt="" height="60%" width="60%" class="mt-3"><br><br>
+                        <h5>TUTORIALS</h5>
+                    </a>
+                </center>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+            <div class="card w-100 p-3" style="box-shadow: 5px 5px 10px #888888; border-radius: 5px; overflow: hidden;">
+                <center>
+                    <a href="{% url 'questions' %}" style="text-decoration: none;">
+                        <img src="{% static 'images/book.png' %}" alt="" height="60%" width="60%" class="mt-3"><br><br>
+                        <h5>Q/A</h5>
+                    </a>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

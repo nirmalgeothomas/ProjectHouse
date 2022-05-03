@@ -1,0 +1,99 @@
+{% extends 'user/user_base.html' %} {% load static %} {% block body %}
+<style>
+  @media screen and (max-width:292px) {
+    .btn-secondary {
+      margin-bottom: 6px;
+    }
+  }
+</style>
+<div style="text-align: center;">
+  <h4 style="position: relative;">Select a platform click on start to take the exam</h4>
+</div>
+<hr style="position: relative;">
+<p style="margin-left: 10%;position: relative;top: 50px;"></p>
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {% for message in messages %}
+  <center>{{message}}</center>
+  {% endfor %}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+<!--Grid column-->
+
+<!--Grid column-->
+
+
+    <!-- Material form register -->
+
+    <div class="row">
+      <div class="col-12 col-sm-2 col-md-3"></div>
+      <div class="col-12 col-sm-8 col-md-6">
+        <div class="card">
+
+
+          <!--Card content-->
+          <div class="card-body">
+
+            <!-- Form -->
+            <form action="{% url 'takemocktest' %}" method="post" onsubmit="return myfun()" style="color: #757575;">
+              {% csrf_token %}
+
+              <div class="row">
+                <div class="col-12 col-sm-3 col-md-3"></div>
+                <div class="col-12 col-sm-6 col-md-6">
+                  <!-- First name -->
+                  <br>
+
+
+                  <select class="form-select" name="selectplatform" aria-label="Default select example">
+                    {% for i in platformname %}
+                    <option value="{{ i.platformname }}">{{ i.platformname }}</option>
+                    {% endfor %}
+                  </select>
+                  <!-- Password -->
+                  <br>
+                  <!-- Phone number -->
+
+
+                  <!-- Sign up button -->
+                  <div style="text-align: center;">
+                    <button type="cancel" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Start</button>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-3 col-md-3"></div>
+              </div>
+              <!-- Social register -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <br>
+    <!--Section: Live preview-->
+
+
+
+
+ 
+
+
+
+
+
+<script>
+
+  $(document).ready(function () {
+    function disablePrev() { window.history.forward() }
+    window.onload = disablePrev();
+    window.onpageshow = function (evt) { if (evt.persisted) disableBack() }
+  });
+</script>
+
+</body>
+
+</html>
+{% endblock %}

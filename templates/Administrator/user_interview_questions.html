@@ -1,0 +1,208 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project House</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/469ce4321a.js" crossorigin="anonymous"></script>
+     <link href="{% static 'css/style6.css' %}" rel="stylesheet">
+    <style type="text/css">
+        .css-serial {
+          counter-reset: serial-number;  /* Set the serial number counter to 0 */
+        }
+
+        .css-serial h2:first-child:before {
+          counter-increment: serial-number;  /* Increment the serial number counter */
+          content: counter(serial-number);  /* Display the counter */
+        }
+        .btnstyl {
+                margin-left: -35%;
+                margin-bottom: 1rem;
+                background: #eed000e8;
+                border-color: aliceblue;
+                color: black;
+                border-radius: 1rem;
+                width:200px;
+        }
+        .btnstyl2 {
+            margin-left: 25%;
+            margin-bottom: 1rem;
+            background: #eed000e8;
+            border-color: aliceblue;
+            color: black;
+            border-radius: 1rem;
+            width: 200px;
+    }
+        @media only screen and (max-device-width: 400px){
+            .btnstyl {
+                margin-left: -6%;
+                margin-bottom: 1rem;
+                background: #eed000e8;
+                border-color: aliceblue;
+                color: black;
+                border-radius: 1rem;
+                width:200px;
+        }
+        .btnstyl2 {
+            margin-left: 15%;
+            margin-bottom: 1rem;
+            background: #eed000e8;
+            border-color: aliceblue;
+            color: black;
+            border-radius: 1rem;
+            width: 200px;
+    }
+        }
+        .box {
+            transition: 1s;
+        }
+
+        .box img:hover {
+            transform: scale(1.3);
+            z-index:2;
+        }
+
+        .btnstyl2 a {
+             text-decoration: none;
+             color: black;
+        }
+    </style>
+</head>
+<body><header style="background-image: url('{% static "images/6777876-blue-abstract-photos.png" %}');width: 100%; height: 300px;">
+        <div >
+        <nav class="navbar navbar-dark bg-primary" style="height: 55px;">
+
+            <div class="logo" style="margin-bottom: 150px;margin-left: 40px;width: 30px; ">
+
+            </div>
+            <div class="container-fluid px-0" style="position: absolute;top: 1%;" >
+                <div class="navbar-brand" style="position: relative;left: 0px; bottom: 11px; margin-bottom: 150px;margin-left: 10px;font-weight: normal;font-max-size: large;font-size: 25px;"><b>Project</b> House</div>
+                    <ul class="nav-area" >
+                    <li style="position: relative;bottom: 11px; margin-bottom: 150px;margin-left: 0px;font-weight: normal;font-max-size: large;"><a href={% url 'userdashboard' %}> Home</a></li>
+                    <li style="position: relative;bottom: 11px; margin-bottom: 150px;margin-left: 0px;font-weight: normal;font-max-size: large;"><a href="{% url 'userreqprojects' %}">Send project ideas</a></li>
+                        <li style="position: relative;bottom: 11px; margin-bottom: 150px;margin-left: 0px;font-weight: normal;font-max-size: large;"><a href="{% url 'userintership' %}">Apply for internships</a></li>
+                    </ul>
+            </div>
+        </nav>
+
+
+<div style="margin-left: 37%; margin-top: 5%">
+            <img src="{% static 'images/Group-43.png' %}" width="55%">
+        </div>
+        <div style="margin-left: 34%;margin-top: 2rem;margin-bottom: 2rem;">
+            <h6 style="color: white; font-family: sans-serif; font-style: oblique;">Find your best projects for your academics from here</h6>
+        </div>
+
+</header>
+<div class="">
+    <section id="scroll">
+        <div class="container">
+        {% for x in plat %}
+    <h2 style="margin-left: 10px;margin-top: 20px;">{{ x.platformname }} Questions and Answers</h2>
+            <br>
+    {% for i in s %}
+        {% if i.platform_name == x.platformname %}
+    <div>
+        <ul>
+            <li><b>{{ i.q1 }}</b></li>
+            <p><b>Ans:</b>{{ i.a1 }}</p>
+        </ul>
+    </div>
+    {% endif %}
+            {% endfor %}
+            <hr>
+            {% endfor %}
+    </div>
+</section>
+
+</div>
+{#        <!-- Content section 2-->#}
+{##}
+{#        <!-- Content section 3-->#}
+{#    <section id="scroll">#}
+{#            <div class="container px-5">#}
+{##}
+{#                <div class="row gx-5 align-items-center">#}
+{#                    <div class="col-lg-6 order-lg-2">#}
+{#                        <div class="p-5"><img src="{% static 'images/pi.png' %}" alt="..." width="83%" /></div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-6 order-lg-1">#}
+{#                        <div class="p-5">#}
+{#                            <h2 class="display-6" style="color: #0cd8eced;">. Fun alphabet game</h2>#}
+{#                            <hr>#}
+{#                            <p style="text-align: justify;">This is one of the simple python projects yet an exciting one. You can even call it a mini-game. Make a program in which the computer randomly chooses a number between 1 to 10, 1 to 100, or any range. Then give users a hint to guess the number. Every time the user guesses wrong, he gets another clue, and his score gets reduced. The clue can be multiples, divisible, greater or smaller, or a combination of all.</p>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#             <a href="#">#}
+{#                <button type="button" class="btn btnstyl">#}
+{#                    view project in detail#}
+{#                    <i class="fas fa-arrow-right" style="margin-left: 1rem;"></i>#}
+{#                </button>#}
+{#            </a>#}
+{##}
+{##}
+{#    </section>#}
+{##}
+{#    <section id="scroll">#}
+{#            <div class="container px-5">#}
+{##}
+{#                <div class="row gx-5 align-items-center">#}
+{#                    <div class="col-lg-6 order-lg-2">#}
+{#                        <div class="p-5"><img  src={% static 'images/pi3.png' %} alt="..." width="83%" /></div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-6 order-lg-1">#}
+{#                        <div class="p-5">#}
+{#                            <h2 class="display-6" style="color: #0cd8eced;">. Alarm clock</h2>#}
+{#                            <hr>#}
+{#                            <p style="text-align: justify;">This is one of the simple python projects yet an exciting one. You can even call it a mini-game. Make a program in which the computer randomly chooses a number between 1 to 10, 1 to 100, or any range. Then give users a hint to guess the number. Every time the user guesses wrong, he gets another clue, and his score gets reduced. The clue can be multiples, divisible, greater or smaller, or a combination of all.</p>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#             <a href="#">#}
+{#                <button type="button" class="btn btnstyl">#}
+{#                    view project in detail#}
+{#                    <i class="fas fa-arrow-right" style="margin-left: 1rem;"></i>#}
+{#                </button>#}
+{#            </a>#}
+{##}
+{##}
+{#    </section>#}
+{#    <section id="scroll">#}
+{#            <div class="container px-5">#}
+{##}
+{#                <div class="row gx-5 align-items-center">#}
+{#                    <div class="col-lg-6 order-lg-2">#}
+{#                        <div class="p-5"><img  src={% static 'images/shutterstock_554850088.png' %} alt="..." width="83%" /></div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-6 order-lg-1">#}
+{#                        <div class="p-5">#}
+{#                            <h2 class="display-6" style="color: #0cd8eced;">. Calculator</h2>#}
+{#                            <hr>#}
+{#                            <p style="text-align: justify;">This is one of the simple python projects yet an exciting one. You can even call it a mini-game. Make a program in which the computer randomly chooses a number between 1 to 10, 1 to 100, or any range. Then give users a hint to guess the number. Every time the user guesses wrong, he gets another clue, and his score gets reduced. The clue can be multiples, divisible, greater or smaller, or a combination of all.</p>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#             <a href="#">#}
+{#                <button type="button" class="btn btnstyl">#}
+{#                    view project in detail#}
+{#                    <i class="fas fa-arrow-right" style="margin-left: 1rem;"></i>#}
+{#                </button>#}
+{#            </a>#}
+{##}
+{##}
+{#    </section>#}
+<hr>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src={% static 'js/scripts.js' %}></script>
+</div>
+</body>
+</html>

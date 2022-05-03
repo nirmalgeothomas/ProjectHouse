@@ -1,0 +1,55 @@
+{% extends 'Administrator/adm_base.html' %} {% load static %} {% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <h3>Requested Internship</h3><br>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>NAME</th>
+                                        <th>EMAIL ID</th>
+                                        <th>PHONE NUMBER</th>
+                                        <th>CHOSEN LANGUAGE</th>
+                                        <th>COLLEGE</th>
+                                        <th>QUALIFICATION</th>
+                                        <th>LOCATION</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    {% for i in platform %}
+                                    <tr>
+                                        <td>{{ i.name }}</td>
+                                        <td>{{ i.emailid }}</td>
+                                        <td>{{ i.phonenumber }}</td>
+                                        <td>{{ i.platform }}</td>
+                                        <td>{{ i.college }}</td>
+                                        <td>{{ i.qualifications }}</td>
+                                        <td>{{ i.location }}</td>
+
+                                        {% endfor %}
+                                    </tr>
+
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

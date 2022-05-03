@@ -1,0 +1,103 @@
+{%extends 'Administrator/adm_base.html'%}{% load static %} {% block body %}
+
+<div class="page-breadcrumb">
+    <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Interview Q&A</h4>
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="card">
+
+    <div class="card-body ">
+
+        <hr />
+        <form action="{% url 'interview' %}" method="post" class="needs-validation" novalidate
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row justify-content-center mt-5">
+                <div class="col-12 col-sm-6 col-md-6 grid-margin justify-content-end">
+                    <img src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %}" alt="loading" width="16">
+                    <span class="font-medium">Select platform:</span>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 grid-margin justify-content-center">
+                    <select class="form-select inp form-control" name="selectplatform"
+                        aria-label="Default select example ">
+                        <option selected>Select platform</option>
+                        {% for i in platformname %}
+                        <option value="{{ i.platformname }} ">{{ i.platformname }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-6 grid-margin justify-content-center">
+                    <img src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %} " alt="loading " width="16 ">
+                    <span class="font-medium ">Question 1:</span>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 grid-margin justify-content-center">
+                    <input type="file" class="inp form-control" name="qu1 " placeholder="Enter short description: ">
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 grid-margin justify-content-center">
+                    <img src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %} " alt="loading " width="16 ">
+                    <span class="font-medium ">Answer:</span>
+                </div>
+                    <div class="col-12 col-sm-6 col-md-6 grid-margin justify-content-center">
+                        <textarea class="form-control inp " rows="5 " name="ans1 "
+                            id="shortdescription "></textarea>
+                    </div>
+                <div class="col-12 col-sm-12 col-md-12 grid-margin">
+                        <button type="submit" class="btn btn-primary me-2 w-10">Submit</button>
+                        <button class="btn btn-light w-10" type="reset">Cancel</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        {% for x in plat %}
+        <center>
+            <h2 style="margin-left: 10px;">{{ x.platformname }} Questions and Answers.</h2>
+        </center>
+        <!-- Column -->{% for i in s %}
+        {% if i.platform_name == x.platformname %}
+        <div class="col-lg-10 col-xlg-3 col-md-12">
+
+            <div class="white-box"
+                style="background: #FFFFFF; width: 100%;border-radius: 2rem; margin-left: 5%;box-shadow: rgb(23 24 25 / 45%) 0px 3px 3px">
+                <a href="{% url 'deleteq' i.id %}">
+                    <img src="{% static 'plugins/images/Icon-material-delete.png' %}" alt="Platforms" width="16px"
+                        style="margin-left: 95%;margin-top: 2%">
+                </a>
+
+                <ul class="list-inline two-part align-items-center mb-0" style="margin-top: 5%">
+
+                    <li style="margin-left: 5%; color: rgb(0, 68, 255);">
+                        <h5>Q){{ i.q1 }}</h5>
+                    </li>
+
+
+
+                    <hr style="margin-left: 5%; margin-right: 5%;">
+                    <div class="break-all">
+                        <p style="margin-left: 5%;margin-top: 1%;margin-right: 5%;text-align: justify;">Ans){{ i.a1 }}
+                        </p>
+                    </div>
+
+
+            </div>
+
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+{%endblock%}

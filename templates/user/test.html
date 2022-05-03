@@ -1,0 +1,126 @@
+{% extends 'user/userbase.html' %} {% load static %} {% block content %}
+<div class="container">
+    <form name="s" onsubmit="submitForm()" method="POST" action="{% url 'score1' %}">
+        {% csrf_token %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card p-3">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    
+                    <div class="col-md-10">
+                      
+                        
+                            <center>
+                                <h2 style=" color: rgb(62, 177, 223);">Test</h2>
+                            </center>
+                            <hr>
+                            <div class="row">
+                                
+                            
+                                <div class="col-md-12"><h3 style=" color: rgb(62, 177, 223);">Questions</h3></div>
+                                
+                                
+                            
+                                
+                                
+                                {% for qa in q %}
+                                 
+                        
+                                <div class="col-md-12"><br><img src="{% static 'plugins/images/Icon-awesome-circle-notch.png' %}" alt="loading" width="16">&nbsp;&nbsp;{{qa.question}}</div>
+                                <div class="col-md-12"></div>
+                                    
+                                    
+                                    <div class="col-md-12" style="padding-left:50px;"><br>
+                                        <input  type="radio" id="{{qa.optiona}}" name="{{qa.qandaid}}"
+                                                value="{{qa.optiona}}">
+                                        <label>{{qa.optiona}}</label>
+                                    </div>
+                                    <div class="col-md-12" style="padding-left:50px;"><br>
+                                        <input  type="radio" id="{{qa.optionb}}" name="{{qa.qandaid}}"
+                                                value="{{qa.optionb}}">
+                                        <label>{{qa.optionb}}</label>
+                                    </div>
+                                    <div class="col-md-12" style="padding-left:50px;"><br>
+                                        <input  type="radio" id="{{qa.optionc}}" name="{{qa.qandaid}}"
+                                                value="{{qa.optionc}}">
+                                        <label>{{qa.optionc}}</label>
+                                    </div>
+                                    <div class="col-md-12"></div>
+                                
+                                {%endfor%}
+                               
+
+                                <div class="col-md-12"> 
+                                <input type="hidden" name="score" id="score"> 
+                                </div>
+                                <div class="col-md-9"></div>
+                                <div class="col-md-3 mt-3">
+                                <button onclick="showalert()" type="submit" class="btn btn-info w-100">Submit</button>
+                                </div>
+                         
+                                
+                            </div>
+                                
+                        </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+<script>
+    function submitForm()
+    {
+        var count=0;
+       
+        {% for qa in q %}
+         
+        {
+            var ele =document.getElementsByName('{{qa.qandaid}}');
+            
+               for(i=0;i<ele.length;i++)
+               {
+                   if(ele[i].checked)
+                   {
+                   if(ele[i].value=='{{qa.correct}}')
+                   count=count+1;
+                   }
+               }
+        }
+        {%endfor%}
+        document.s.score.value=count;
+    }
+    function showalert()
+    {
+        var count=0;
+       
+        {% for qa in q %}
+         
+        {
+            var ele =document.getElementsByName('{{qa.qandaid}}');
+            
+               for(i=0;i<ele.length;i++)
+               {
+                   if(ele[i].checked)
+                   {
+                   if(ele[i].value=='{{qa.correct}}')
+                   count=count+1;
+                   }
+               }
+        }
+        {%endfor%}
+        
+        
+        
+        alert("Score:"+count)
+
+            
+    }
+        
+    
+    
+</script>
+
+{% endblock %}

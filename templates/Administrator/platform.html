@@ -1,0 +1,55 @@
+{% extends 'adm_base.html' %}{% load static %} {% block body %}
+
+
+
+<div class="page-content">
+    <!--breadcrumb-->
+    <div class="card radius-15">
+        <div class="card-body">
+            <div class="card-title">
+                <center>
+                    <h3 class="mb-0">ADD NEW PLATFORM</h3>
+                </center>
+            </div>
+            <hr/>
+        </div>
+        <main>
+            <fieldset>
+
+
+                &nbsp;&nbsp;&nbsp;
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <label class="col-sm-3 col-form-label">Enter Platform Name:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <label class="col-sm-3 col-form-label">Upload Thumbnail:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                        <label for="exampleFormControlTextarea2">Enter Short Description about this platform:</label>
+                        <div class="form-group">
+                            &nbsp;
+                            <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
+
+                        </div>
+                    </div>
+
+                    <button>save</button> <button>cancel</button>
+                </div>
+            </fieldset>
+        </main>
+    </div>
+</div>
+
+{% endblock body %}

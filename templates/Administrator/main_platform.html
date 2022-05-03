@@ -1,0 +1,169 @@
+{% extends 'Administrator/adm_base.html' %}{% load static %}
+{% block body %}
+
+<head>
+
+    <style>
+        .welcome {
+            width: 85%;
+            background: #FFFFFF;
+            border-radius: 2rem;
+        }
+        
+        .break-all {
+            word-break: break-all;
+        }
+        
+        @media screen and (max-width: 991px) {
+            .lgcards {
+                display: none !important;
+            }
+            hr {
+                width: 48vw !important;
+            }
+            h5 {
+                margin-left: 10px;
+                width: 90px;
+            }
+            .editp {
+                margin-left: 5vw !important;
+            }
+            .addp {
+                margin-left: 40% !important;
+            }
+            .par3 {
+                width: 90% !important;
+            }
+        }
+        
+        @media screen and (max-width: 440px) {
+            .plpic {
+                width: 27vw;
+                height: 27vw;
+            }
+        }
+        
+        @media screen and (max-width: 400px) {
+            .plpic {
+                width: 20vw;
+                height: 20vw;
+            }
+        }
+        
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            .par3 {
+                width: 450px !important;
+            }
+        }
+        
+        @media screen and (min-width: 992px) {
+            .smcards {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+
+<div class="row">
+    
+ 
+
+
+
+
+        <div style="text-align: center; margin-top: 5%;">
+
+
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <h4 style="position: relative;margin-top: 5%;">
+                                <center>
+                                    platforms
+                                </center>
+
+                            </h4>
+                        </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-md-12 ">
+        <div style="margin-bottom: 1%;">
+            <a href="{% url 'platform' %}">
+                <ul class="list-inline two-part d-flex align-items-center mb-4 mb-lg-0">
+                    <li class="addp" style="margin-left: 80%; color: rgb(0, 68, 255); font-weight: 600;"> Add new platform</li>
+                    <li style="margin-left: 1%;"> <img src="{% static 'plugins/images/Group-44.png' %}" alt="" width=" 16px"></li>
+                </ul>
+            </a>
+        </div>
+        </div>
+        </div>
+
+
+ <div class="row">
+    {% for x in plat %}
+ 
+<!-- Column -->
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12 ">
+                <h4 style="position: relative;margin-top: 5%;">
+                    <center>
+                        {{x.platformname}}
+                    </center>
+
+                </h4>
+            </div>
+            <div class="col-md-12 ">
+                <center>
+                    <img src="{{x.uploadthumbnail.url}}" alt="..." style="width: 150px;height: 100px;">
+                </center>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12 ">
+                <center>
+
+                    <label>
+                        {{x.description}}
+
+                    </label>
+                </center>
+            </div>
+        </div>
+   
+<div class="row">
+
+    <div class="col-md-12 col-sm-6 col-6 mb-4">
+        <center>
+
+
+            <button type="button" class="btn btn-outline-danger">
+                <a style="text-decoration:none ; color:white" href="delete/{{x.id}}"></a>
+                
+              Delete
+            </a>
+            </button>
+        </center>
+    </div>
+    <div class="col-md-12 col-sm-6 col-6">
+        <center>
+        <a href="/platform_edit/">
+            <button type="button" class="btn btn-outline-warning">
+                <i class="mdi mdi-grease-pencil"></i>
+              edit
+            </button>
+          </a>
+        </center>
+    </div>
+</div>
+</div>
+</div>
+{% endfor %}
+
+{% endblock body %}

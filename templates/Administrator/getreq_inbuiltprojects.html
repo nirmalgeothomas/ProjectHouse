@@ -1,0 +1,57 @@
+ {% extends 'Administrator/adm_base.html' %}{% load static %} {% block body %}
+
+<div class="page-breadcrumb">
+    <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h5 class="page-title">Requested Projects</h5>
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive pt-3">
+            <table class="table table-light" id=" dtBasicExample ">
+                <thead>
+                    <tr>
+                        <center>
+                            <th>NAME</th>
+                        </center>
+                        <center>
+                            <th>EMAIL ID</th>
+                        </center>
+                        <center>
+                            <th>PHONE NUMBER</th>
+                        </center>
+                        <center>
+                            <th>PROJECT NAME</th>
+                        </center>
+                        <center>
+                            <th>LOCATION</th>
+                        </center>
+
+
+                    </tr>
+                </thead>
+                <br>
+                <tbody>
+                    {% for GetProject in spo %}
+                    <tr>
+                        <td>{{ GetProject.name }}</td>
+                        <td>{{ GetProject.emailid }}</td>
+                        <td>{{ GetProject.phonenumber }}</td>
+                        <td>{{ GetProject.projectname }}</td>
+                        <td>{{ GetProject.Location }}</td>
+
+
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

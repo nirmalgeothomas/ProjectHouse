@@ -1,0 +1,67 @@
+{% extends 'user/user_base.html' %} {% load static %} {% block body %}
+
+<div class="row">
+
+    <div class="col-12">
+
+
+        <div>
+            <center>
+                <h4 style="position: relative;margin-top: 5%;"> Select a platform to view tutorials </h4>
+            </center>
+        </div>
+    </div>
+
+    <hr style="position: relative;">
+    <div class="col-md-3 mb-4"></div>
+
+
+    <div class="col-md-6 mb-4">
+
+        <div style="text-align: center; margin-top: 5%;">
+
+            <div class="card">
+
+                <div class="card-body px-lg-5 pt-0">
+
+                    <form action='/user_views' method="post">
+                        {%csrf_token%}
+                        <div class="form-row">
+                            <div class="col"> <br>
+                                <center>
+
+                                    <select class="form-select" name="selectplatform" aria-label="Default select example" style="width: 160px;position: relative; bottom: px;">
+                                       
+        
+                                        <option value="">--select--</option>
+
+                                                {% for i in var %}
+
+                                                    <option value="{{i.id}}">{{i.platformname}}</option>
+                                                {% endfor %}
+                                            
+                                            
+                                     </select> <br> <br>
+                                </center>
+
+
+
+
+                                <button class="btn btn-primary" style="background-color:red;">Cancel</button>
+
+                                <button type="submit" class="btn btn-primary " style="background-color: blue;">Start</button>
+                                <!-- </a> -->
+                                <!-- Social register -->
+                    </form>
+                    </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        {% endblock %}

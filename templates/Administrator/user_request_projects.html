@@ -1,0 +1,153 @@
+{% extends 'user/user_base.html' %} {% load static %} {% block body %}
+<div style="text-align: center;">
+  <h4 style="position: relative;top: 50px">SHARE YOUR IDEAS WITH US</h4>
+</div>
+<hr style="position: relative;top: 50px;">
+<p style="margin-left: 20%;position: relative;top: 50px;">If you want us to develop a project for you. Kindly provide us
+  the project description and your contact details. Our representative will get to you soon</p>
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {% for message in messages %}
+  <center>{{message}}</center>
+  {% endfor %}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+<!--Grid column-->
+
+<!--Grid column-->
+<div class="col-md-6 mb-4" style="margin-left: 25%; margin-right: 20%;">
+
+  <!--Title-->
+
+  <section class="pr-1">
+
+    <!-- Material form register -->
+    <div style="text-align: center;">
+      <div class="card" style="top: 80px;">
+
+
+
+        </h5>
+
+        <!--Card content-->
+        <div class="card-body px-lg-5 pt-0">
+
+          <!-- Form -->
+          <form action="{% url 'userreqprojectdb' %}"" method="post" onsubmit="return myfun()" style="color: #757575;"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-row">
+              <div class="col-12">
+                <!-- First name -->
+                <br>
+                <div class="md-form">
+                  <label for="materialRegisterFormFirstName" style=" position:relative;top: 8px">Name:</label>
+                  <input type="text" name="name" class="form-control" required style="position: relative;top: 10px;">
+                </div><br>
+              </div>
+              <div class="col">
+                <!-- Last name -->
+                <div class="md-form">
+                  <label for="materialRegisterFormLastName" style=" position:relative;top: 8px">Phone No:</label>
+                  <input type="text" name="phonenumber" class="form-control" required id="mobilenumber"
+                    style="position: relative;top: 10px;">
+                </div>
+                <div class="mt-2" id="messages" style="color:red;"></div>
+              </div><br>
+            </div>
+
+            <!-- E-mail -->
+            <div class="md-form mt-0">
+
+              <label for="materialRegisterFormEmail" class="active" style=" position:relative;top: 8px">E-mail:</label>
+              <input type="email" name="emailid" id="email" class="form-control" required
+                style="position: relative;top: 10px;">
+            </div>
+            <div class="mt-2" id="emessages" style="color:red"></div>
+            <br>
+
+            <!-- Password -->
+            <div class="md-form">
+
+              <label for="materialRegisterFormPassword" class="active" style=" position:relative;top: 8px">Project
+                name:</label>
+              <input type="text" name="projectname" class="form-control" required
+                style="    position: relative;top: 10px;">
+              <small id="materialProjectname" class="active">
+
+              </small>
+            </div><br>
+
+            <!-- Phone number -->
+            <div class="md-form">
+
+              <label for="materialRegisterFormProjectdescription" class="active"
+                style=" position:relative;top: 8px">Project description:</label>
+              <textarea class="form-control" rows="5" name="projectdescription"
+                style="position: relative;top: 10px;"></textarea>
+
+              <small id="materialProjectname" class="active">
+
+              </small>
+            </div><br>
+
+            <div class="md-form">
+
+              <label for="materialRegisterFormProjectdescription" class="active"
+                style=" position:relative;top: 8px">Upload project(If any):</label>
+              <input type="file" name="project_files" value="no_file" class="form-control"
+                style=" position: relative;top: 10px;">
+              <small id="materialProjectname" class="active">
+
+              </small>
+            </div><br>
+
+
+
+            <!-- Sign up button -->
+            <div style="text-align: center;"><button class="btn btn-secondary cancel" type="reset"
+                style="width:80px;background: #B2C1C2;margin-left: 10vh;margin-bottom: 2%;border-radius: 16px;position: relative;bottom: 40px;top: 10px;">Cancel</button>
+              <button class="btn btn-secondary update" type="submit" style="width:80px;
+
+    background: #66F0F5;
+    margin-right: 20px;
+    margin-left: 10px;
+    margin-bottom: 2%;
+    border-radius: 16px;
+    position: relative;
+    bottom: 40px;
+    top: 10px;
+    ">Submit</button>
+            </div>
+            <!-- Social register -->
+          </form>
+          <br>
+          <br>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </section>
+
+  <!--Section: Live preview-->
+
+</div>
+<!--Grid column-->
+
+</div>
+<!--Grid row-->
+
+</section>
+
+</div>
+
+</body>
+
+</html>
+{% endblock %}

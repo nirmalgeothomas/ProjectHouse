@@ -1,0 +1,27 @@
+@media screen and (min-width: 360px) and (max-width: 575px)
+{
+    .qm {
+        margin-left: 0px !important;
+    }
+
+    .fm {
+        margin-top: 12px;
+    }
+
+    .inp {
+        margin-left: 30px !important;
+        width: 280px !important;
+    }
+
+    .cancel {
+        margin-left: 20vw !important;
+    }
+
+    .head1 {
+        margin-left: -20px !important;
+        transform: scale(0.9,0.9);
+    }
+    .white-box {
+        margin-left: 10px !important;
+    }
+}

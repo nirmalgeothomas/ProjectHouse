@@ -1,0 +1,34 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Tangerine');
+@import url('https://fonts.googleapis.com/css2?family=FAMILY_NAME:wght@WEIGHT_OR_RANGE&display=swap');
+html,
+body {
+    font-family: 'Poppins';
+    font-size: 15px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    margin: 0;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+}
+
+a {
+    color: rgba(34, 54, 69, .7);
+    font-weight: 500;
+}
+
+a:hover {
+    color: #e74c3c;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.navbar {
+    background: yellow;
+    padding: 3rem 2rem;
+    height: 0rem;
+    min-height: 12;
+}

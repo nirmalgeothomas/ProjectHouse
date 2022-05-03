@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <title>login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            color: #000;
+            overflow-x: hidden;
+            height: 100%;
+
+
+        }
+
+        .card0 {
+            box-shadow: 0px 4px 8px 0px #757575;
+            border-radius: 0px
+        }
+
+        .card2 {
+            margin: 0px 40px
+        }
+
+        .logo {
+            width: 200px;
+            height: 100px;
+            margin-top: 20px;
+            margin-left: 35px
+        }
+
+        .image {
+            width: 360px;
+            height: 280px
+        }
+
+        .border-line {
+            border-right: 1px solid #EEEEEE
+        }
+
+        .facebook {
+            background-color: #3b5998;
+            color: #fff;
+            font-size: 18px;
+            padding-top: 5px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer
+        }
+
+        .twitter {
+            background-color: #1DA1F2;
+            color: #fff;
+            font-size: 18px;
+            padding-top: 5px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer
+        }
+
+        .linkedin {
+            background-color: #2867B2;
+            color: #fff;
+            font-size: 18px;
+            padding-top: 5px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer
+        }
+
+        .line {
+            height: 1px;
+            width: 45%;
+            background-color: #E0E0E0;
+            margin-top: 10px
+        }
+
+        .or {
+            width: 10%;
+            font-weight: bold
+        }
+
+        ::placeholder {
+            color: #BDBDBD;
+            opacity: 1;
+            font-weight: 300
+        }
+
+        :-ms-input-placeholder {
+            color: #BDBDBD;
+            font-weight: 300
+        }
+
+        ::-ms-input-placeholder {
+            color: #BDBDBD;
+            font-weight: 300
+        }
+
+        input,
+        textarea {
+            padding: 7px;
+            border: 1px solid lightgrey;
+            border-radius: 2px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            color: black;
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        input:focus,
+        textarea:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: 1px solid #304FFE;
+            outline-width: 0
+        }
+
+        button:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline-width: 0
+        }
+
+        a {
+            color: inherit;
+            cursor: pointer
+        }
+
+        .btn-blue {
+            background-color: #1A237E;
+            width: 150px;
+            color: #fff;
+            border-radius: 2px
+        }
+
+        .btn-blue:hover {
+            background-color: #2867B2;
+            cursor: pointer
+        }
+    </style>
+
+<body style="background-image:url({% static 'images/a1.jpg' %})">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-lg-2 ">
+
+            </div>
+            <div class="col-md-8 col-lg-8 col-12 col-sm-12 mt-5 mb-5">
+                <div class="card p-3">
+                    <form action="{% url 'usercreate' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+
+
+
+
+                            <div class="col-md-12  mt-3">
+                                <center>
+                                    <h4>Signup Here....</h4>
+                                </center>
+
+
+                            </div>
+
+                            <div class="col-md-12 mt-3">
+                                <label for="name">Full Name <span style="color:red; ">*</span></label>
+                                <input type="text" class="form-control form-control-lg" name="name"
+                                    id="exampleInputEmail1" placeholder="Name">
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <label>Platform <span style="color:red; ">*</span></label>
+                                <!-- <input type="" class="form-control form-control-lg" id="exampleInputEmail1" placeholder=""> -->
+
+
+                                <select name="pid" class="form-control form-control-lg" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    {% for i in pl %}
+                                    <option value="{{i.platformid}}">{{i.name}}</option>
+                                    {% endfor %}
+                                </select>
+
+
+                            </div><br>
+                            <div class="col-md-12 mt-3">
+                                <label>course <span style="color:red; ">*</span></label>
+                                <!-- <input type="" class="form-control form-control-lg" id="exampleInputEmail1" placeholder=""> -->
+
+
+                                <select name="coid" class="form-control form-control-lg" required>
+
+                                    <option selected disabled value="">Choose...</option>
+                                    {% for j in c %}
+                                    <option value="{{j.courseid}}">{{j.name}}</option>
+                                    {% endfor %}
+                                </select>
+
+
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <label>Contact Number <span style="color:red; ">*</span></label>
+                                <input type="number" name="cno" class="form-control form-control-lg"
+                                    id="exampleInputEmail1" placeholder="number">
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <label>Email Id <span style="color:red; ">*</span></label>
+                                <input type="email" name="email" class="form-control form-control-lg"
+                                    id="exampleInputEmail1" placeholder="email">
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <label>Password <span style="color:red; ">*</span></label>
+                                <input type="password" name="password" class="form-control form-control-lg"
+                                    id="exampleInputEmail1" placeholder="password">
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <label>Confirm Password</label>
+                                <input type="password" name="conformpassword" class="form-control form-control-lg"
+                                    id="exampleInputPassword1" placeholder="con-Password">
+                            </div>
+
+                            <div class="col-md-12 mb-3 mt-3">
+
+                                <button type="submit"
+                                    class="btn btn-block btn-primary btn-lg auth-form-btn font-weight-medium w-100">SIGNUP</button>
+                            </div>
+
+                            <div class=" col-md-12 text-center mt-2 font-weight-light">
+                                Have Already An Account? <a href="{% url 'userlog' %}" class="text-primary">Login</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-2 col-lg-2 ">
+
+            </div>
+        </div>
+    </div>
+
+</body>

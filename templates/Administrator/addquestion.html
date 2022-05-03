@@ -1,0 +1,67 @@
+{% extends 'Administrator/adminbase.html' %} {% load static %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card p-3" style="box-shadow: 5px 10px 18px #888888; border-radius: 5px;">
+                <form method="POST" class="post-form" action="{% url 'addquestion' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <center>
+                                <h4 style=" color: rgb(62, 177, 223); margin-top: 30px; margin-bottom: 20px;">ADD NEW QUESTION</h4>
+                            </center>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Question : </label>
+                                    <input type="text" name="question" class="form-control">
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Lecture : </label>
+                                    <select type="text" name="lecture" class="form-control">
+                                        <option value=""></option>
+                                        {% for i in lecture %}
+                                        <option value="{{i.name}}">{{ i.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Course : </label>
+                                    <select type="text" name="course" class="form-control">
+                                        <option value=""></option>
+                                        {% for i in course %}
+                                        <option value="{{i.name}}">{{ i.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label>Answer : </label>
+                                    <input type="text" name="correct" class="form-control">
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label>Option 1 : </label>
+                                    <input type="text" name="optiona" class="form-control">
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label>Option 2 : </label>
+                                    <input type="text" name="optionb" class="form-control">
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label>Option 3 : </label>
+                                    <input type="text" name="optionc" class="form-control">
+                                </div>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4 mt-5 mb-3">
+                                    <a href="#"><button type="submit" class="btn btn-info w-100">Save</button></a>
+                                </div>
+                                <div class="col-md-4"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

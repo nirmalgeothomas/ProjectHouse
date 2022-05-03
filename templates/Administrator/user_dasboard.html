@@ -1,0 +1,377 @@
+{% extends 'user/user_base.html' %} {% load static %} {% block body %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Project House | Final year computer science projects</title>
+    <meta name="description"
+        content="Project house is a warehouse of more than 100+ computer science projects in all platforms. Project house also helps to identify free internships and job training facility.">
+    <link rel="canonical" href="https://projecthouse.store/" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/469ce4321a.js" crossorigin="anonymous"></script>
+    <link href="{% static 'css/style6.css' %}" rel="stylesheet">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+    <link href="{% static 'css/chat.css' %}" rel="stylesheet">
+    <style>
+        .searchbox input {
+            background-color: transparent;
+            border: 0px solid;
+            color: #CCC;
+        }
+
+        .btnstyl {
+            margin-left: 0%;
+            margin-bottom: 1rem;
+            background: #eed000e8;
+            border-color: aliceblue;
+            color: black;
+            border-radius: 1rem;
+        }
+
+        .btnstyl2 {
+            margin-left: 0%;
+            margin-bottom: 1rem;
+            background: #eed000e8;
+            border-color: aliceblue;
+            color: black;
+            border-radius: 1rem;
+        }
+
+        .btn11 {
+            margin-left: 20px;
+        }
+
+        .btn12 {
+            margin-left: 0px;
+        }
+
+        @media screen and (max-width: 1400px) {
+            .btnstyl {
+                margin-left: 0%;
+                margin-bottom: 1rem;
+                background: #eed000e8;
+                border-color: aliceblue;
+                color: black;
+                border-radius: 1rem;
+            }
+
+            .btnstyl2 {
+                margin-left: 0%;
+                margin-bottom: 1rem;
+                background: #eed000e8;
+                border-color: aliceblue;
+                color: black;
+                border-radius: 1rem;
+            }
+
+            .btn11 {
+                margin-left: 20px;
+            }
+
+            .btn12 {
+                margin-left: 0px;
+            }
+        }
+
+        @media only screen and (max-device-width: 990px) {
+            .btnstyl {
+                margin-left: 0%;
+                margin-bottom: 1rem;
+                background: #eed000e8;
+                border-color: aliceblue;
+                color: black;
+                border-radius: 1rem;
+            }
+
+            .btnstyl2 {
+                margin-left: 0%;
+                margin-bottom: 1rem;
+                background: #eed000e8;
+                border-color: aliceblue;
+                color: black;
+                border-radius: 1rem;
+            }
+
+            .btn11 {
+                margin-left: 10%;
+            }
+
+            .btn12 {
+                margin-left: 30%;
+            }
+        }
+
+        .break-all {
+            word-break: break-word;
+        }
+
+        @media only screen and (max-device-width:535px) {
+            #footer {
+                width: 100%;
+            }
+        }
+    </style>
+    <meta name="google-site-verification" content="Y9uQV09ceEoDfoFTXANrLsOqVkzspiOH9yk0qBkpVZ8" />
+    <!--<meta name="keywords"content="final year projects,Projects for computer science,Project topics for final years,Computer science projects examples,Python projects,Android projects,Unity projects,php projects,Asp.net projects,Java projects,Student internships,Free job training.”>-->
+</head>
+
+<body>
+
+    {% for i in platform_name %}
+    <section>
+        <div class="container px-5" style="text-align: left;">
+            <div class="row gx-5 align-items-center justify-content-center">
+                <div class="col-lg-5 order-lg-2">
+                    <div class="p-5">
+                        <img class="homethumbnail" src="{{ i.uploadthumbnail.url }}" alt="..."
+                            style="width: 150px;height: auto;" />
+                    </div>
+                </div>
+                <div class="col-lg-7 order-lg-1">
+                    <div class="p-4">
+                        <a class="text-decoration-none" href="" style="color: #00ADB5;">
+                            <h3 class="display-6" style="color: #00ADB5">{{ i.platformname }}</h3>
+                            <hr>
+                        </a>
+                        <div class="break-all">
+                            <p>{{ i.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2 btn11">
+                    <a href="{% url 'userpythonprojects' i.id %}">
+                        <button style="width: 155px; height: 50px;" type="button" class="btn btnstyl">
+                            View Projects
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </a>
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2 btn12">
+                    <a href="{% url 'view_ieee_papers' i.id %}">
+                        <button style="width: 165px; height: 50px;" type="button" class="btn btnstyl2">
+                            View IEEE papers
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}<br>
+    <div class="container" style="text-align: left;">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-5 col-md-5 col-12 order-lg-3">
+                <div class="p-3 mt-3">
+                    <img class="homethumbnail" src="{% static 'images/tutorial.png' %}" alt="..."
+                        style="width: 150px;height: auto;" />
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-md-7 col-12 order-lg-2">
+                <div class="p-4">
+                    <a href="{% url 'view_tutorials' %}" style="color: #00ADB5;">
+                        <h3 class="display-6" style="color: #00ADB5">Watch Tutorials</h3>
+                        <hr />
+                    </a>
+                    <div class="break-all">
+                        <p>Want to learn any programming language watch our latest programming tutorials.</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="container px-5 px-xl-0" style="text-align: left;">
+        <div class="row align-items-center justify-content-center d-lg-block">
+            <div class="col-lg-7 col-12">
+                <br>
+                <a href="{% url 'userintership' %}">
+                    <div>
+                        <span class="blinking"
+                            style="font-family:Georgia, 'Times New Roman', Times, serif;font-size: 20px;margin-left: 10%;">Need
+                            Internship in Multi-National Companies ?</span>
+                </a>
+                <style>
+                    .blinking {
+                        animation: blinkingText 1.2s infinite;
+                    }
+
+                    @keyframes blinkingText {
+                        0% {
+                            color: #0000FF;
+                        }
+
+                        49% {
+                            color: #0000FF;
+                        }
+
+                        60% {
+                            color: transparent;
+                        }
+
+                        99% {
+                            color: transparent;
+                        }
+
+                        100% {
+                            color: #0000FF;
+                        }
+                    }
+                </style>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container px-0 px-xl-5" style="text-align: left;">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-md-5 col-12 order-lg-2">
+                <div class="p-5">
+                    <img class="homethumbnail" src="{% static 'images/QandA.png' %}" alt="..."
+                        style="width: 150px;height: auto;" />
+                </div>
+            </div>
+            <div class="col-md-7 col-12 order-lg-1">
+                <div class="p-4">
+                    <a href="{% url 'interview_Q_A' %}" style="color: #00ADB5;">
+                        <h3 class="display-6" style="color: #00ADB5">Most Common Job Interview Questions and Answers
+                        </h3>
+                        <hr>
+                    </a>
+                    <div class="break-all">
+                        <p>Want to know (or use) some of the most common interview questions and answers? Here's a
+                            comprehensive list, along with some of the best answers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAT BAR BLOCK -->
+    <div class="chat-bar-collapsible">
+        <button id="chat-button" type="button" class="collapsible">Chat with us!
+            <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
+        </button>
+
+        <div class="content">
+            <div class="full-chat-block">
+                <!-- Message Container -->
+                <div class="outer-container">
+                    <div class="chat-container">
+                        <!-- Messages -->
+                        <div id="chatbox">
+                            <h5 id="chat-timestamp"></h5>
+                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                        </div>
+
+                        <!-- User input box -->
+                        <div class="chat-bar-input-block">
+                            <div id="userInput">
+                                <input id="textInput" class="input-box" type="text" name="msg"
+                                    placeholder="Tap 'Enter' to send a message">
+                                <p></p>
+                            </div>
+
+                            <div class="chat-bar-icons">
+                                <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                                    onclick="heartButton()"></i>
+                                <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                                    onclick="sendButton()"></i>
+                            </div>
+                        </div>
+
+                        <div id="chat-bar-bottom">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <hr>
+    <!-- Footer-->
+    <!--<footer class="py-5 bg-black">
+            <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Your Website 2021</p></div>
+        </footer>-->
+
+
+
+
+
+
+
+
+    <!-- Bootstrap core JS-->
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js "></script>
+    <!-- Core theme JS-->
+    <script>
+        const inputDetect = document.querySelector('#searchbar');
+        const searchResult = document.getElementById('search-result');
+        const log = document.getElementById('values')
+        inputDetect.addEventListener('input', function (e) {
+            searchResult.style.display = 'block';
+            console.log('Im working');
+            log.textContent = e.target.value;
+            searchResult.style.display = " block ";
+        });
+    </script>
+    <script>
+        $('#srcbtn').click(function () {
+            let search = $('#searchbar').val();
+            console.log(search)
+            var searchList = document.querySelector('#search-result-list');
+
+
+            var data = {
+                'csrfmiddlewaretoken': '{{ csrf_token }}',
+                'search': search,
+            }
+
+            $.ajax({
+                url: '/userdashboard/',
+                method: 'POST',
+                data: data,
+                dataType: 'json',
+                success: function (data) {
+                    searchList.innerHTML = '';
+                    console.log('hi');
+                    document.getElementById('search-result').style.display = " block ";
+                    var i;
+
+                    for (i = 0; i < data.length; i++) {
+                        var li = document.createElement(" li ");
+                        var aTag = document.createElement(" a ");
+                        aTag.innerHTML = data[i];
+                        var url = " http://localhost:8000/takeDiversion ";
+                        var arg = data[i];
+                        aTag.href = url + " / " + arg;
+                        li.appendChild(aTag);
+                        searchList.appendChild(li);
+                        console.log(data[i]);
+                    }
+
+                }
+            });
+        });
+
+        $('body').click(function () {
+            $('.search-result').hide();
+        });
+    </script>
+    <script src={% static 'js/scripts.js' %}></script>
+    <script src={% static 'js/responses.js' %}></script>
+    <script src={% static 'js/chat.js' %}></script>
+
+</body>
+
+</html>
+{% endblock %}

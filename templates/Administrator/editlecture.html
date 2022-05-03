@@ -1,0 +1,62 @@
+{% extends 'Administrator/adminbase.html' %} {% load static %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card p-3" style="box-shadow: 5px 10px 18px #888888; border-radius: 5px;">
+                <form method="POST" class="post-form" action="/updatelecture/{{ lecture.lectureid }}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            <center>
+                                <h4 style=" color: rgb(62, 177, 223);">UPDATE LECTURE DETAILS</h4>
+                            </center>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Video Name : </label>
+                                    <input type="text" name="name" value="{{ lecture.name }}" class="form-control">
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    <label>Video Description : </label>
+                                    <textarea type="text" name="description" class="form-control" rows="5">{{ lecture.description }}</textarea>
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    <label>Platform : </label>
+                                    <select type="text" name="platform" class="form-control">
+                                        <option value="{{ lecture.courseid.platformid.name }}">{{ lecture.courseid.platformid.name }}</option>
+                                        {% for i in platform %}
+                                        <option value="{{i.name}}">{{ i.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    <label>Course : </label>
+                                    <select type="text" name="course" class="form-control">
+                                        <option value="{{ lecture.courseid.name }}">{{ lecture.courseid.name }}</option>
+                                        {% for i in course %}
+                                        <option value="{{i.name}}">{{ i.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    <label>Video Upload : </label>
+                                    <input type="file" name="video" class="form-control" value="{{ lecture.video.url }}">
+                                </div>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4 mt-3  mb-3">
+                                    <a href="#"><button type="submit" class="btn btn-info w-100">Update</button></a>
+                                </div>
+                                <div class="col-md-4"></div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3 mb-3">
+                            <img src="{% static 'images/classes.jpg' %}" alt="" height="100%" width="100%" style="border-radius: 3px;">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'Administrator/adm_base.html' %}{% load static %}
+{% block body %}
+<div class="page-wrapper" style="background: #FFFFFF">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">IEEE papers</h4>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div style="margin-bottom: 1%;">
+        <a href="{% url 'add_ieee' %}">
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                <li class="addp" style="margin-left: 70%; color: rgb(0, 68, 255);"> Add new IEEE paper</li>
+                <li style="margin-left: 1%;"> <img src="{% static 'plugins/images/Group-44.png' %}" alt=""
+                        width=" 16px"></li>
+            </ul>
+        </a>
+    </div>
+
+
+    <div class="smcards">
+        <div class="container">
+            <div class="row">
+                {% for p in paper %}
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="card card1"
+                        style="background: #FFFFFF; width: 90vw;border-radius: 2rem; box-shadow: rgb(23 24 25 / 45%) 0px 3px 3px">
+                        <div class="card-body">
+
+
+                            <table>
+                                <tr>
+                                    <!-- <td >
+                                          <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                            <li style="margin-left: 5%; color: rgb(0, 68, 255);"><h5>{{ p.selectplatform }}</h5></li>
+                                         </ul>
+                                    </td> -->
+                                    <td style="width: 450px;">
+                                        <div class="break-all">
+                                            <ul class="list-inline d-flex align-items-center mb-0">
+                                                <!-- <li style="margin-left: 5%; color: rgb(0, 68, 255);"><h5>{{ p.selectplatform }}</h5></li><br> -->
+                                                <li style="color: rgb(0, 68, 255);">
+                                                    <h5 style="display: flex; justify-content: center;">{{ p.title }}</h5>
+                                                </li>
+
+
+
+                                                <!-- <a href="deleteplatform/{{ x.id }}" <li style="margin-left: 35%;"><img src="{% static 'plugins/images/Icon material-delete.png' %}" alt="Platforms" width="16px"></li></a> -->
+                                                <a href="{% url 'deletepaper' p.id %}">
+                                                    <img class="bin"
+                                                        src="{% static 'plugins/images/Icon-material-delete.png' %}"
+                                                        alt="Platforms" width="16px"
+                                                        style="position: absolute; left: 84vw;">
+                                                </a>
+                                            </ul>
+                                        </div>
+                                        <!--<hr style="margin-left: 5%; margin-right: 5%;">-->
+                                        <!-- <p style="margin-left: 5%;margin-top: 1%;margin-right: 5%;text-align: justify;">{{ x.description }}</p> -->
+
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'Administrator/adminbase.html' %} {% load static %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card p-3" style="box-shadow: 5px 10px 18px #888888; border-radius: 5px;">
+                <form method="POST" class="post-form" action="/updatequestion/{{ qa.qandaid }}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12 mt-3">
+                            <center>
+                                <h4 style=" color: rgb(62, 177, 223); margin-top: 20px; margin-bottom: 20px;">UPDATE QUESTION</h4>
+                            </center>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Question : </label>
+                                    <input type="text" name="question" value="{{ qa.question }}" class="form-control">
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label>Answer : </label>
+                                    <input type="text" name="correct" value="{{ qa.correct }}" class="form-control">
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label>Option 1 : </label>
+                                    <input type="text" name="optiona" value="{{ qa.optiona }}" class="form-control">
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label>Option 2 : </label>
+                                    <input type="text" name="optionb" value="{{ qa.optionb }}" class="form-control">
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label>Option 3 : </label>
+                                    <input type="text" name="optionc" value="{{ qa.optionc }}" class="form-control">
+                                </div>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4 mt-5 mb-3">
+                                    <a href="#"><button type="submit" class="btn btn-info w-100">Update</button></a>
+                                </div>
+                                <div class="col-md-4"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

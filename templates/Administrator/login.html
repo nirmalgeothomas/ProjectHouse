@@ -1,0 +1,31 @@
+<html>
+{% load static %}
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="{% static 'css/1.css' %}">
+    </head>
+<html>
+    <body style="background-image:url({% static 'images/a1.jpg' %})">
+        <div class="box">
+            <h2>Admin Panel Login</h2>
+            <form action="{% url 'admin_login' %}" method='POST'>
+                {% csrf_token %}
+                <div class="inputBox">
+                    <input type="text" name="username" required="">
+                    <label>username</label>
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="password" required="">
+                    <label>password</label>
+                </div>
+                <input type="submit" name="" value="submit">
+                <p style="color: #00fecb">{% for messages in messages %}
+                    {{ messages }}
+                {% endfor %}</p>
+            </form>
+        </div>
+    </body>
+</html>
+
+

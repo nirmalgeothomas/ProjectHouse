@@ -1,0 +1,75 @@
+{% extends 'user/userbase.html' %} {% load static %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card p-3 mb-3">
+                        <center>
+                            <img src="{% static 'images/Ellipse3.png' %}" class="mt-5" alt="" height="200px" width="200px">
+                        </center>
+                        <form method="POST" class="post-form" action="{% url 'updateuserprofile' l.sid %}">
+                            {% csrf_token %}
+                            <center>
+                                <h4 style=" color: rgb(62, 177, 223);">EDIT PROFILE</h4>
+                            </center>
+                            <hr><br>
+                            <div class="row">
+                                <div class="col-md-12"><br>
+                                    <label for="name">Name  </label>
+                                    <input type="text" name="name" value="{{l.fullname}}" class="form-control">
+                                </div>
+                                <div class="col-md-12"><br>
+                                    <label for="platform">Platform </label>
+                                    <select name="platformid" class="custom-select" id="pla" required>
+                                        <option selected value="{{l.platformid}}">{{p.name}}</option>
+                                        {% for pp in pl %}
+                                        <option value="{{ pp.platformid}}">{{pp.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-12"><br>
+                                    <label for="cource">Course </label>
+                                    <select name="level" class="custom-select" id="coo" required>
+                                        <option selected value="{{c.courseid}}">{{c.name}}</option>
+                                        {% for cl in co %}
+                                        <option value="{{ cl.courseid }}">{{cl.name}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+                                <div class="col-md-12"><br>
+                                    <label for="cno">Contact Number  </label>
+                                    <input type="text" name="cno" value="{{l.cno}}" pattern="[0-9]{10}" maxlength="10" class="form-control">
+                                </div>
+                                <div class="col-md-12"><br>
+                                    <label for="email">Email  </label>
+                                    <input type="email" name="email" value="{{l.email}}" class="form-control">
+                                </div>
+                                <div class="col-md-12"><br>
+                                    <label for="password">Password  </label>
+                                    <input type="password" name="password" value="{{l.password}}" class="form-control">
+                                </div>
+
+
+
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4 mt-3">
+                                    <button type="submit" class="btn btn-info w-100">update</button>
+                                </div>
+                                <div class="col-md-4"></div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

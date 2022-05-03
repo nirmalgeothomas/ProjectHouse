@@ -1,0 +1,205 @@
+{% extends 'user/user_base.html' %} {% load static %} {% block body %} {% for j in vars %}
+
+
+<div class="row">
+    <div class="col-12">
+
+    </div>
+    <div class="col-md-3 mb-4"></div>
+
+
+    <div class="col-md-6 mb-4">
+
+        <div style="text-align: center; margin-top: 5%;">
+
+
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <h4 style="position: relative;margin-top: 5%;">
+                                <center>
+                                    {{j.platformname}}
+                                </center>
+
+                            </h4>
+                        </div>
+                        <div class="col-md-12 ">
+                            <center>
+                                <img src="{{j.uploadthumbnail.url}}" alt="..." style="width: 150px;height: 100px;">
+                            </center>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12 ">
+                            <center>
+
+                                <label>
+                                    {{j.description}}
+
+                                </label>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endfor %}
+{% for k in mem %}
+
+<div class="row">
+    <div class="col-12">
+
+    </div>
+    <div class="col-md-3 mb-4"></div>
+
+
+    <div class="col-md-6 mb-4">
+
+        <div style="text-align: center; margin-top: 5%;">
+
+
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <h4 style="position: relative;margin-top: 5%;">
+                                <center>
+                                    Tutorials
+                                </center>
+
+                            </h4>
+                        </div>
+                        <div class="col-md-12 ">
+                            <center>
+
+
+
+
+
+                                <video src="{{k.tutorial_video.url}}" controls controlsLIst="nodownload" id="videos"
+                                    width="250" height="200" type="video/mp4" controlsLIst="nodownload">
+                            </center>
+                        </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-12 ">
+                                <center>
+
+                                    <label>
+                                        {{k.description}}
+
+                                    </label>
+                                </center>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endfor %}
+
+
+
+
+
+
+<style>
+    video::-webkit-media-controls-timeline {
+        display: none;
+    }
+</style>
+
+
+<script>
+
+    var ppbutton = document.getElementById("vidbutton");
+    ppbutton.addEventListener("click", playPause);
+
+    myVideo = document.getElementById("videos");
+    function playPause() {
+        if (myVideo.paused) {
+            myVideo.play();
+            ppbutton.innerHTML = "Pause";
+        }
+        else {
+            myVideo.pause();
+            ppbutton.innerHTML = "Play";
+        }
+    }
+</script>
+
+
+
+<script>
+
+
+
+    var videoSource = new Array();
+    videoSource[0] = '';
+    videoSource[1] = '';
+    videoSource[2] = '';
+    videoSource[3] = '';
+    videoSource[4] = '';
+    let key = 0; // global
+    const videoCount = videoSource.length;
+    const element = document.getElementById("videos");
+
+    function playVideo(videoNum) {
+        element.setAttribute("src", videoSource[videoNum]);
+        element.setAttribute("type", 'video/mp4');
+        element.autoplay = true;
+        element.load();
+        element.play();
+    }
+    document.getElementById('videos').addEventListener('ended', myFunctionHandle, false);
+
+    function myFunctionHandle() {
+        key++;
+        if (key == videoCount) {
+            key = 0;
+            playVideo(key);
+        } else {
+            playVideo(key);
+        }
+    }
+
+
+</script>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="/static/plugins/zoomsl.js"></script>
+
+
+<!-- <script >
+      $('.myimage').imagezoomsl({
+        zoomrange:[1,12],
+        zoomstart:4,
+        innerzoom:true,
+        magnifierborder:'none'
+    
+      });
+    </script> -->
+
+{% endblock %}

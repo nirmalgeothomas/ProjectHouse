@@ -1,0 +1,349 @@
+{% extends 'Administrator/adm_base.html' %} {% load static %} {% block body %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Project House</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/469ce4321a.js" crossorigin="anonymous"></script>
+    <link href="{% static 'css/style6.css' %}" rel="stylesheet">
+    <style type="text/css">
+        .css-serial {
+            counter-reset: serial-number;
+            /* Set the serial number counter to 0 */
+        }
+        
+        .css-serial h2:first-child:before {
+            counter-increment: serial-number;
+            /* Increment the serial number counter */
+            content: counter(serial-number);
+            /* Display the counter */
+        }
+        
+        .btnstyl {
+            margin-left: 5%;
+            margin-bottom: 1rem;
+            background: #6f42c1;
+            border-color: aliceblue;
+            color: white;
+            border-radius: 1rem;
+        }
+        
+        .box {
+            transition: 1s;
+        }
+        
+        .box img:hover {
+            transform: scale(2);
+            z-index: 2;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="css-serial">
+        <section id="scroll">
+            <div class="container-fluid px-lg-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-9 order-lg-1">
+                        <div class="">
+                            <h4 class="display-6">{{ projects.projectname }} {{ projects.selectplatform }} projects</h4>
+                            <hr>
+                            <p style="text-align: justify;margin-left:4%  ">Find interesting projects and get started with an execution plan.</p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <table class="table table-striped" style="width: 60%; margin-left: 7%;--bs-table-accent-bg: white;--bs-table-striped-bg: primary;">
+            <tbody>
+                <tr>
+                    <td>Project Name</td>
+                    <td>{{ projects.projectname }}</td>
+                </tr>
+                <tr>
+                    <td>Language used</td>
+                    <td>{{ projects.languageused }}</td>
+                </tr>
+                <tr>
+                    <td>Database</td>
+                    <td>{{ projects.database }}</td>
+                </tr>
+                <tr>
+                    <td>Softwares</td>
+                    <td>{{ projects.softwares }}</td>
+                </tr>
+                <tr>
+                    <td>User Interface</td>
+                    <td>{{ projects.userinterface }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{% url 'user_req_inbuilt_projectss' projects.id %}">
+            <button type="button" class="btn btnstyl">Get Project<i class="fas fa-arrow-right" style="margin-left: 1rem;"></i>
+                </button>
+        </a>
+        {% if projects.uploadvideo == '' %} {% else %}
+        <section id="scroll">
+            <div class="container px-lg-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-12 order-lg-2">
+
+                    </div>
+                    <div class="col-lg-12 order-lg-1">
+                        <div class="">
+                            <h2 class="display-6" style="color: #0cd8eced;">. Project Demo</h2>
+                            <hr>
+                            <video width="380" height="300" controls>
+                                 <source src="{{ projects.uploadvideo.url }}" type="video/mp4">
+                            </video>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        {% endif %}
+        <section id="scroll">
+            <div class="container px-lg-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-12 order-lg-2">
+
+                    </div>
+                    <div class="col-lg-12 order-lg-1">
+                        <div class="">
+                            <h2 class="display-6" style="color: #0cd8eced;">. Project Abstract</h2>
+                            <hr>
+                            <p style="text-align: justify;">{{ projects.projectabstract }}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+        <section id="scroll">
+            <div class="container px-lg-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-12 order-lg-2">
+
+                    </div>
+                    <div class="col-lg-12 order-lg-1">
+                        <div class="">
+                            <h2 class="display-6" style="color: #0cd8eced;">. Module Details</h2>
+                            <hr>
+                            <p style="text-align: justify;">{{ projects.moduledetails }}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        {% if projects.uploadscreenshots == '' %} {% else %}
+        <section id="scroll">
+            <div class="container px-lg-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-12 order-lg-2">
+
+                    </div>
+
+                    <div class="col-lg-12 order-lg-1">
+                        <div class="">
+                            <h2 class="display-6" style="color: #0cd8eced;">. Screenshots</h2>
+                            <hr>
+                            <style>
+                                * {
+                                    box-sizing: border-box;
+                                }
+                                
+                                .column {
+                                    float: left;
+                                    width: 33.33%;
+                                    padding: 5px;
+                                }
+                                /* Clearfix (clear floats) */
+                                
+                                .row::after {
+                                    content: "";
+                                    clear: both;
+                                    display: table;
+                                }
+                            </style>
+
+                            <div class="row" style="padding-bottom: 2%;">
+
+                                <div class="col-lg-5 col-md-6 col-sm-12 box">
+                                    <img src="{{ projects.uploadscree1 }}" class="myimage" alt="..." width="95%" />
+                                </div>
+                                <div class="col-lg-5 col-md-6 col-sm-12 box ">
+                                    <img src="{{ projects.uploadscree2 }}" class="myimage" alt="..." width="95%" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5 col-md-6 col-sm-12 box ">
+                                    <img src="{{ projects.uploadscree3 }}" class="myimage" alt="..." width="95%" />
+                                </div>
+                                <div class="col-lg-5 col-md-6 col-sm-12 box">
+                                    <img src="{{ projects.uploadscree4 }}" class="myimage" alt="..." width="95%" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <br><br><br>
+            </div>
+        </section>
+        {% endif %}
+        <!-- <section id="scroll">
+            <div class="container px-5">
+
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-6" style="color: #0cd8eced;">. IEEE Paper</h2>
+                            <hr>
+                            <p style="text-align: justify;">Click here to download the ieee paper</p>
+                           {# <a href="{{ projects.uploadpdf.url }}"> #}
+                                <button type="button" style="padding: 5px;" class="btn btnstyl">
+                    download
+                    <i class="fas fa-arrow-right" style="margin-left: 1rem;"></i>
+                </button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section> -->
+
+
+        <!-- <h3 style="text-align: center;">Get this Project</h3>
+<hr>
+<p style="text-align: center"> To get this project  , Kindly share your contact  details.
+Our representative will contact you soon</p>
+<div class="col-md-6 mb-4" style="margin-left: 25%; margin-right: 20%;">
+
+              <!--Title-->
+        <!-- <form action={% url 'getproject' projects.id%} method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+                                 {% csrf_token %} -->
+
+        <!--Section: Live preview-->
+        <!-- <section class="pr-1"> -->
+
+        <!-- Material form register -->
+        <!-- <div class="card"> -->
+
+
+
+        <!-- </h5> -->
+
+        <!--Card content-->
+        <!-- <div class="card-body px-lg-5 pt-0"> -->
+
+        <!-- Form -->
+        <!-- <form class="text-center" style="color: #757575;"> -->
+
+        <!-- <div class="form-row">
+                        <div class="col"> -->
+        <!-- First name -->
+        <!-- <br>
+                          <div class="md-form">
+                            <label for="materialRegisterFormFirstName" style=" position:relative;top: 8px">Name:</label>
+                            <input type="text" id="materialRegisterFormFirstName" name="name" class="form-control" style=" position:relative;top: 8px"">
+                          </div><br>
+                        </div>
+                        <div class="col">
+                           Last name 
+                          <!-- <div class="md-form">
+                            <label for="materialRegisterFormLastName" style=" position:relative;top: 8px">Phone No:</label>
+                             <input type="text" id="materialRegisterFormPhone" name="phone" class="form-control" style=" position:relative;top: 8px">
+                          </div>
+                        </div><br>
+                      </div> -->
+
+        <!-- E-mail -->
+        <!-- <div class="md-form mt-0">
+
+                        <label for="materialRegisterFormEmail" class="active" style=" position:relative;top: 8px">E-mail:</label>
+                        <input type="email" id="materialRegisterFormEmail" name="email" class="form-control" style=" position:relative;top: 8px">
+                      </div><br> -->
+
+        <!-- Password -->
+
+
+
+
+        <!-- Sign up button -->
+        <!-- <div style="text-align: center;"><button class="btn btn-secondary cancel" type="reset"  style="width:80px;background: #B2C1C2;margin-left: 0vh;margin-bottom: 2%;border-radius: 16px;position: relative;bottom: 40px;top: 10px;" >Cancel</button>
+                    <button class="btn btn-secondary update" type="submit" style="width:80px; -->
+
+        <!-- background: #66F0F5;
+    margin-right: 20px;
+    margin-left: 10px;
+    margin-bottom: 2%;
+    border-radius: 16px;
+    position: relative;
+    bottom: 40px;
+    top: 10px;
+    ">
+
+                        Submit</button></div> -->
+        <!-- Social register -->
+
+        <!-- </form>  -->
+        <!-- </div>
+                </div>
+              </section> -->
+        <!--Section: Live preview-->
+
+    </div>
+    <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+    </section>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{% static 'plugins/zoomsl.js' %}"></script>
+
+
+    <!-- <script >
+  $('.myimage').imagezoomsl({
+    zoomrange:[1,12],
+    zoomstart:4,
+    innerzoom:true,
+    magnifierborder:'none'
+  
+  });
+</script> -->
+</body>
+
+</html>
+{% endblock %}

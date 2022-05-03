@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/adminbase.css' %}">
+    <title>Admin</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar" id="sidebar" style="background-image: linear-gradient(#007acc, #0099ff);">
+            <div class="logoo">
+                <img src="{% static 'images/Icon-simple-treehouse.png' %}" style="margin-top:5px;" alt="homepage"
+                    width="10%" height="10%" />
+                <h3><b>Project</b> House</h3>
+            </div>
+            <ul>
+                <li><a href="{% url 'adminDash' %}"><i class="fas fa-user-alt"></i><span>Dashboard</span></a></li>
+                <li><a href="{% url 'myprofile' %}"><i class="fas fa-user-alt"></i><span>My Profile</span></a></li>
+                <li><a href="{% url 'projects' %}"><i class="fas fa-project-diagram"></i><span>Projects</span></a></li>
+                <li><a href="{% url 'mainplatform' %}"><i class="fab fa-buffer"></i><span>Platforms</span></a></li>
+                <li><a href="{% url 'main_ieee' %}"><i class="far fa-newspaper"></i><span>Add IEEE Papers</span></a>
+                </li>
+                <li><a href="{% url 'reqprojects' %}"><i class="fas fa-share-square"></i><span>Project
+                            Requests</span></a></li>
+                <li><a href="{% url 'req_ieeeprojects' %}"><i class="far fa-caret-square-right"></i><span>IEEE Project
+                            Requests</span></a></li>
+                <li><a href="{% url 'intership' %}"><i class="fas fa-compress-arrows-alt"></i><span>Internship
+                            Requests</span></a></li>
+                <li><a href="{% url 'interview_q_a' %}"><i class="fas fa-book-open"></i><span>Interview Q/A</span></a>
+                </li>
+                <li><a href="{% url 'quiz' %}"><i class="fas fa-book-open"></i><span>Mock Exam Questions</span></a></li>
+                <li><a href="{% url 'addvediotutorial' %}"><i class="fas fa-play"></i><span>Video Tutorials</span></a>
+                </li>
+                <li><a href="{% url 'courses' %}"><i class="fas fa-swatchbook"></i><span>Courses</span></a></li>
+                <li><a href="{% url 'admin_logout' %}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+            </ul>
+        </div>
+        <div class="main-content" id="maincontent">
+            <nav class="navbar bg-light mb-4">
+                <button type="button" style="display: block;" id="sidebarCollapse"
+                    class="btn btn-outline-info d-lg-none"><i class="fas fa-bars"></i></button>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="search" value="Search">
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                {% for message in messages %} {% if message %}
+                <div class="alert" onclick="this.parentElement.style.display='none';">
+                    <div class="row d-flex" style="background-color:rgba(255,0,0,0.1);">
+                        <div class="col-md-12">
+                            <center>
+                                <h6 style="color: red; font-weight: lighter; margin-top: 5px;">{{ message }}</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                {% endif %} {% endfor %}
+            </div>
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $('#maincontent').toggleClass('active');
+                $('#search').toggleClass('active');
+            });
+        });
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project House</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/469ce4321a.js" crossorigin="anonymous"></script>
+     <link href="{% static 'css/style6.css' %}" rel="stylesheet">
+</head>
+<body>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script>
+    function myfun() {
+      var a=document.getElementById("mobilenumber").value;
+      var e=document.getElementById("email").value;
+      if (isNaN(a)) {
+        document.getElementById("messages").innerHTML="** only numeric value";
+        return false;
+      }
+      if (a.length<10) {
+        document.getElementById("messages").innerHTML="** mobile number must be 10 digit";
+        return false;
+      }
+      if (a.length>10) {
+        document.getElementById("messages").innerHTML="** mobile number must be 10 digit";
+        return false;
+      }
+      if ( (e.charAt(e.length-4)!='.') && (e.charAt(e.length-3)!='.') ){
+        document.getElementById("emessages").innerHTML="invalid email address";
+        return false;
+
+      }
+    }
+
+  </script>
+    <header style="background-image: url('{% static "images/6777876-blue-abstract-photos.png" %}');height: 300px;">
+        <div >
+       <nav class="navbar navbar-dark bg-primary" style="height: 55px;">
+
+            <div class="logo" style="margin-bottom: 150px;margin-left: 40px;width: 30px; ">
+
+            </div>
+            <div class="container-fluid px-0" style="position: absolute;top: 1%;" >
+                <div class="navbar-brand" style="position: relative;left: 0px; bottom: 11px; margin-bottom: 150px;margin-left: 10px;font-weight: normal;font-max-size: large;font-size: 25px;"><b>Project</b> House</div>
+                    <ul class="nav-area" >
+                    <li style="position: relative;bottom: 11px; margin-bottom: 150px;margin-left: 0px;font-weight: normal;font-max-size: large;"><a href={% url 'userdashboard' %}> Home</a></li>
+                    <li style="position: relative;bottom: 11px; margin-bottom: 150px;margin-left: 0px;font-weight: normal;font-max-size: large;"><a href="{% url 'userreqprojects' %}">Send project ideas</a></li>
+                        <li style="position: relative;bottom: 11px; margin-bottom: 150px;margin-left: 0px;font-weight: normal;font-max-size: large;"><a href="{% url 'userintership' %}">Apply for internships</a></li>
+                        <li style="position: relative;bottom: 11px; margin-bottom: 150px;margin-left: 0px;font-weight: normal;font-max-size: large;"><a href="{% url 'usermockexam' %}">Take mock exam</a></li>
+
+
+
+                    </ul>
+            </div>
+        </nav>
+      <div style="margin-left: 37%; margin-top: 5%">
+            <img src={% static 'images/Group-43.png' %} width="55%">
+        </div>
+        <div style="margin-top: 2rem;margin-bottom: 2rem;">
+            <h6 style="color: white; font-family: sans-serif; font-style: oblique;text-align: center;">Find your best projects for your academics from here</h6>
+        </div>
+
+        </div>
+
+  </header>
+  <div style="text-align: center;"><h4 style="position: relative;top: 50px">Select a platform to view tutorials</h4></div>
+  <hr style="position: relative;top: 50px;">
+  <p style="margin-left: 10%;position: relative;top: 50px;"></p>
+  {% if messages %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+    <center>{{message}}</center>
+    {% endfor %}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endif %}
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4" style="margin-left: 25%; margin-right: 20%;">
+
+              <!--Title-->
+
+   <section class="pr-1">
+
+                <!-- Material form register -->
+       <div style="text-align: center;">
+                <div class="card" style="top: 80px;">
+
+
+
+                  </h5>
+
+                  <!--Card content-->
+                  <div class="card-body px-lg-5 pt-0">
+
+                    <!-- Form -->
+                    <form action={% url 'userviewtutorial' %} method="post" onsubmit="return myfun()" style="color: #757575;">
+                        {% csrf_token %}
+
+                      <div class="form-row">
+                        <div class="col">
+                          <!-- First name -->
+                          <br>
+
+
+                   <select class="form-select" name="selectplatform" aria-label="Default select example" style="width: 160px;margin-left: 30%;position: relative;
+    bottom: px;">
+                                        {% for i in platformname %}
+                                            <option value="{{ i.platformname }}">{{ i.platformname }}</option>
+                                        {% endfor %}
+                   </select>
+                      <!-- Password -->
+
+                      <!-- Phone number -->
+
+
+                      <!-- Sign up button -->
+                    <div style="text-align: center;"><button class="btn btn-secondary cancel" type="reset"  style="width:80px;background: #B2C1C2;margin-left: vh;margin-top:5%;margin-bottom: 2%;border-radius: 16px;position: relative;bottom: 40px;top: 10px;" >Cancel</button>
+                    <button class="btn btn-secondary update" type="submit" style="width:80px;
+
+    background: #66F0F5;
+
+    margin-left: 10px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    border-radius: 16px;
+    position: relative;
+    bottom: 40px;
+    top: 10px;
+    ">Start</button></div>
+                      <!-- Social register -->
+                    </form>
+                  </div>
+                </div>
+       </div>
+
+
+
+                      </section>
+              <!--Section: Live preview-->
+
+            </div>
+            <!--Grid column-->
+
+          </div>
+          <!--Grid row-->
+
+        </section>
+
+  </div>
+
+</body>
+</html>
